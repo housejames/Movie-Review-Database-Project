@@ -1,3 +1,4 @@
+// boilerplate connection to postgres through sequelize
 const Sequelize = require('sequelize');
 require('dotenv').config();
 
