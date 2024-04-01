@@ -1,7 +1,23 @@
-<h1>Number of times you've visited this homepage: {{countVisit}}</h1>
+<link rel="stylesheet" type="text/css" href="/css/jass.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
 
-<h2>This is a test</h2>
+ <header>
+    <button class="btn">Write A Review</button>
+</header>
 
-{{#each reviews as |review|}}
-{{> review-details}}
-{{/each}}
+<main class="row">
+    <section class="row">
+        <div class="latestreviews row">
+            <h2>Latest Reviews</h2>
+            {{#each reviews as |review|}}
+            {{> review-details}}
+            {{/each}}
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>test</p>
+</footer>
+
+<script src="/JS/homepage.js"></script>
