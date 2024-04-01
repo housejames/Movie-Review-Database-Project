@@ -36,9 +36,9 @@ Review.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'post',
+    modelName: 'review',
   }
 )
 
 // Exports the model
-module.exports = review;
+module.exports = Review;
