@@ -3,9 +3,11 @@ const router = require('express').Router();
 
 // Imports the main homepage route into a variable
 const homeroute = require('./homeRoutes');
+const apiRoutes = require('./api');
 
-// Sets the variable as the default route
+// Sets the variables as the routes
 router.use('/', homeroute);
+router.use('/api', apiRoutes)
 
 // Sends the user to a 404 page if they go to an invalid route
 router.use((req, res) => {

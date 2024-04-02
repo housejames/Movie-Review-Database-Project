@@ -44,5 +44,24 @@ router.get('/', async (req, res) => {
       }
 })
 
+// Route for posting review page
+router.get('/review', async (req, res) => {
+  try {
+      const reviewData = await Review.findAll({
+          attributes: [
+              'id',
+              'title',
+              'content'
+          ],
+          include: [{model: User, attributes:['username']}]
+      })
+      const reviews = reviewData.map((review) => review.get({ plain: true })
+      );
+      res.render('postreview', {reviews,});
+  }catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+})
 // Exports the route
 module.exports = router;
