@@ -4,13 +4,19 @@ $neon_bar_height: 20px;
 $neon_purple_on:  #d000d0;
 $neon_purple_off: #320f42;
 
+.limelight-regular {
+  font-family: "Limelight", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 @mixin lights_on() {
   animation-name: flicker;
   animation-delay: ((random(400) / 100) * 1s);
   animation-duration: 6s;
   animation-direction: normal;
   animation-fill-mode: forwards;
-  animation-iteration-count: 1;
+  animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
 }
 
@@ -25,7 +31,7 @@ html {
 body {
   color: white;
   margin: 0;
-  padding: 40px;
+  padding: 30px;
   font-size: 20px;
   line-height: 1;
   background-size: cover;
@@ -34,13 +40,13 @@ body {
 }
 
 #marquee {
-  color: black;
+  color: rgb(0, 0, 0);
   width: auto;
-  height: 3em;
+  height: 2em;
   margin: $neon_bar_height auto;
   position: relative;
-  font-size: 2em;
-  font-family: 'Bungee Inline', cursive;
+  font-size: 3em;
+  font-family: "Limelight", sans-serif;
   text-align: center;
   text-transform: uppercase;
   background-size: 100% 1em;
@@ -67,7 +73,7 @@ body {
   
   .marquee_message {
     width: 100%;
-    height: 3em;
+    height: 2em;
     display: table;
     & > span {
       display: table-cell;
