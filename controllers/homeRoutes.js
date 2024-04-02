@@ -7,36 +7,15 @@ const {User, Review} = require('../models/index');
 router.get('/', async (req, res) => {
     try {
         const reviewData = await Review.findAll({
-            attributes: [
-                'id',
-                'title',
-                'content'
-            ],
             // Adds the joined user model with the User attribute of username (User.username)
             include: [{model: User, attributes:['username']}]
         })
         const reviews = reviewData.map((review) => review.get({ plain: true })
         );
-        console.log('+++++++++++++++++++++++++++++++++++++++++')
-        console.log(reviews)
-
-        // Pulled this session section from class repo to make sure sessions are working:
-        req.session.save(() => {
-            // We set up a session variable to count the number of times we visit the homepage
-            if (req.session.countVisit) {
-              // If the 'countVisit' session variable already exists, increment it by 1
-              req.session.countVisit++;
-            } else {
-              // If the 'countVisit' session variable doesn't exist, set it to 1
-              req.session.countVisit = 1;
-            }
-              });
-              // Renders the homepage with the data in reviews
-              res.render('homepage', {
-                reviews,
-                // We send over the current 'countVisit' session variable to be rendered
-                countVisit: req.session.countVisit,
-            });
+        // Renders the homepage with the data in reviews
+        res.render('homepage', {
+        reviews, loggedIn: req.session.logged_in
+        });
     // Error catch    
     }catch (err) {
         console.log(err);
@@ -63,5 +42,28 @@ router.get('/review', async (req, res) => {
       res.status(500).json(err);
     }
 })
+
+router.get("/auth",(req,res)=>{
+  if(req.session.logged_in){
+      return res.redirect("/profile")
+  }
+  res.render("auth",{
+      loggedIn:false
+  })
+})
+
+router.get("/profile",async (req,res)=>{
+  if(!req.session.logged_in){
+      return res.redirect("/auth")
+  }
+  const userData = await User.findByPk(req.session.user_id,{
+      include:[Review]
+  })
+  const hbsData = userData.toJSON();
+  hbsData.loggedIn = true
+  // res.json(hbsData);
+  res.render("profile",hbsData)
+})
+
 // Exports the route
 module.exports = router;
