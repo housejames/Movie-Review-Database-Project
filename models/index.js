@@ -13,7 +13,3 @@ User.hasMany(Review, {
 
 // Exports the newly joined models
 module.exports = {Review, User}
-
-$('body').click(function(){
-    $("#marquee").toggleClass("on");
-  });
