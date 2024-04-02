@@ -1,9 +1,108 @@
-<form class="postform" action="">
-    <input type="text" name="Title" id="blogtitle">
-    <input type="text" name="Content" id="blogcontent">
-    <button type='submit' value='Submit'>Submit</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Your Review</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; 
+            color: #e0e0e0; 
+        }
 
+        /* Form styles */
+        form {
+            background: #242424; 
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+            border-radius: 8px;
+        }
 
+        label {
+            color: #ccc; 
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
 
-<script src="/JS/postLogic.js"></script>
+        input[type="text"],
+        textarea {
+            background-color: #333; 
+            color: #e0e0e0; 
+            width: calc(100% - 1rem);
+            padding: 0.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #555; 
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        /* Adjusted submit button styles */
+        button[type='submit'] {
+            background-image: linear-gradient(to right, #333333, #555555); /* Dark gradient background */
+            color: #ffffff;
+            padding: 0.5rem 1.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border: 1px solid #444; /* Slight border */
+            border-radius: 5px;
+            cursor: pointer;
+            outline: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            transition: background-image 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px; /* Space between the icon and text */
+        }
+
+        button[type='submit']:hover, button[type='submit']:focus {
+            background-image: linear-gradient(to right, #555555, #777777);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+            transform: translateY(-2px);
+        }
+
+        button[type='submit']:active {
+            background-image: linear-gradient(to right, #222222, #444444);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+            transform: translateY(1px);
+        }
+
+        /* Loading animation */
+        .loading {
+            border: 4px solid #2c2c2c; 
+            border-top: 4px solid #3498db; 
+            width: 20px;
+            height: 20px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        button[type='submit'] i {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <form class="postform" action="">
+        <label for="blogtitle">Title Your Review! :</label>
+        <input type="text" name="Title" id="blogtitle">
+        <label for="blogcontent">Write Your Thoughts! :</label>
+        <textarea name="Content" id="blogcontent" rows="8"></textarea>
+        <button type='submit' value='Submit'><i class="fas fa-film"></i> Submit Review</button>
+    </form>
+    <script src="/JS/postLogic.js"></script>
+</body>
+</html>
