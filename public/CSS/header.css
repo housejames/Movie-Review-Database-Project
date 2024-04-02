@@ -1,3 +1,9 @@
+.limelight-regular {
+  font-family: "Limelight", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -9,22 +15,22 @@ html {
 body {
   color: white;
   margin: 0;
-  padding: 40px;
+  padding: 30px;
   font-size: 20px;
   line-height: 1;
   background-size: cover;
-  background-color: black;
+  background-color: #171717;
   background-image: url("http://popcultureaficionado.com/public_files/assets/film_texture_3.jpg");
 }
 
 #marquee {
-  color: black;
+  color: rgb(0, 0, 0);
   width: auto;
-  height: 3em;
+  height: 2em;
   margin: 20px auto;
   position: relative;
-  font-size: 2em;
-  font-family: "Bungee Inline", cursive;
+  font-size: 3em;
+  font-family: "Limelight", sans-serif;
   text-align: center;
   text-transform: uppercase;
   background-size: 100% 1em;
@@ -32,7 +38,7 @@ body {
 }
 #marquee .marquee_message {
   width: 100%;
-  height: 3em;
+  height: 2em;
   display: table;
 }
 #marquee .marquee_message > span {
@@ -62,11 +68,11 @@ body {
   border-radius: 5px;
   background-color: #320f42;
   animation-name: flicker;
-  animation-delay: 0.59s;
+  animation-delay: 3.27s;
   animation-duration: 6s;
   animation-direction: normal;
   animation-fill-mode: forwards;
-  animation-iteration-count: 1;
+  animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
 }
 .neon_bar:after {
