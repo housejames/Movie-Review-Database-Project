@@ -20,7 +20,20 @@ footer{
 
 #option1{
   margin: 25px;
-  border: 3px solid #4D738A;
+  border: 3px solid #700C74;
+  height: 150px;
+  max-width: 300px;
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+  padding: px;
+  font-size: 250%;
+  background-color: #4D48A8;
+}
+
+#logout{
+  margin: 25px;
+  border: 3px solid #700C74;
   height: 150px;
   max-width: 300px;
   border-radius: 15px;
@@ -28,13 +41,12 @@ footer{
   text-align: center;
   padding: 35px;
   font-size: 250%;
-  background-color: #194358;
-  background-image: url(../images/orange\ image\ for\ writing\ a\ review\ button\ 1\ \(1\).png);
+  background-color: #4D48A8;
 }
 
 #option2{
   margin: 25px;
-  border: 3px solid #4D738A;
+  border: 3px solid #700C74;
   height: 150px;
   max-width: 300px;
   border-radius: 15px;
@@ -42,12 +54,12 @@ footer{
   text-align: center;
   padding: 35px;
   font-size: 250%;
-  background-color: #194358;
+  background-color: #4D48A8;
 }
 
 #option3{
   margin: 25px;
-  border: 3px solid #4D738A;
+  border: 3px solid #700C74;
   height: 150px;
   max-width: 300px;
   border-radius: 15px;
@@ -55,7 +67,7 @@ footer{
   text-align: center;
   padding: 35px;
   font-size: 250%;
-  background-color: #194358;
+  background-color: #4D48A8;
 }
 #banner{
   text-align: center;
@@ -72,26 +84,36 @@ footer{
     width: fit-content;
 }
 .latestreviews{
-    border: 3px solid #4D738A;
+    /* border: 3px solid #4D738A; */
     margin: auto;
     /* width: 850px; */
-    background-color: #194358;
+    background-color: #171717;
     border-radius: 15px;
     color: #F2ECFF
     
+}
+#reviewuser{
+  font-size: 65%;
+  margin-top: 25px;
+  margin-left: 8px;
 }
 
 #latest{
   text-align: center;
   padding-top: 25px;
   padding-bottom: 25px;
+
 }
 .reviewcard{
+    background-color: #333539;
     margin: 5px;
-    border: 5px solid black;
+    border: 5px solid #333539;
     border-radius: 15px;
+    margin-bottom: 35px;
+    border: 2px solid #4D585F;
 }
 .reviewwrap{
+  margin-top: 150px;
     margin-left: 50px;
     margin-right: 50px;
     display: flex;
@@ -103,7 +125,20 @@ footer{
     justify-content: space-evenly;
 }
 
+#reviewtitle{
+  text-align: center;
+  margin: auto;
+  border-bottom: 5px solid black;
+  border-radius: 15px;
+  margin: 25px;
+  background-color: #4D738A;
+  box-shadow: 10px 5px 5px #976421;
+  color: white;
+}
 
+#reviewcontent{
+  margin: 15px;
+}
 
 
 /*          vvv Beginning of Button ui style vvv */
@@ -139,7 +174,7 @@ footer{
   }
 
   .Btn {
-    margin-top: 15px;
+    margin-top: 35px;
     border: none;
     border-radius: 50%;
     width: 45px;
@@ -150,7 +185,6 @@ footer{
     transition-duration: .4s;
     cursor: pointer;
     position: relative;
-    background-color: rgb(31, 31, 31);
     overflow: hidden;
   }
   
@@ -159,7 +193,7 @@ footer{
   }
   
   .svgIcon path {
-    fill: white;
+    fill: black;
   }
   
   .text {
@@ -172,7 +206,7 @@ footer{
   }
   
   .Btn:hover {
-    width: 110px;
+    width: 135px;
     transition-duration: .4s;
     border-radius: 30px;
   }

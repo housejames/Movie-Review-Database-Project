@@ -1,20 +1,12 @@
-
-                <div class="reviewcard">
-                    <h1>{{reviews.[0].title}}</h1>
-                    <p>{{reviews.[0].content}}</p>
-                    <h6>Posted by: {{reviews.[0].user.username}}</h6>
-                </div>
-
- 
-                <div class="reviewcard">
-                    <h1>{{reviews.[1].title}}</h1>
-                    <p>{{reviews.[1].content}}</p>
-                    <h6>Posted by: {{reviews.[1].user.username}}</h6>
-                </div>
-
- 
-                <div class="reviewcard">
-                    <h1>{{reviews.[2].title}}</h1>
-                    <p>{{reviews.[2].content}}</p>
-                    <h6>Posted by: {{reviews.[2].user.username}}</h6>
-                </div>
+<section class="reviewcard">
+    <div>
+        <p>Moviename</p>
+        <h1 id="reviewtitle">
+             {{title}}
+        </h1>
+        <p id="reviewcontent">
+            {{content}}
+        </p>
+        <h6 id="reviewuser">Posted by: {{user.username}}</h6>
+    </div>
+</section>

@@ -3,19 +3,56 @@
 
 
 <main class="">
-    <div class="writebtnwrap">
+    {{!-- <div class="writebtnwrap">
         <button class="writebtn">Write A Review</button>
-    </div>
-        {{#if loggedIn}}
+    </div> --}}
+        {{!-- {{#if loggedIn}}
         <a href="/profile"> profile</a>
         <button id="logout">logout</button>
-        {{else}}
+        {{else}} --}}
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            {{!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 Login
-            </button>
+            </button> --}}
 
-            <!-- Modal -->
+            {{!-- <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel"> User Login</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" id="login">
+                                <label for="loginEmail">email</label>
+                                <input type="text" id="loginEmail" placeholder="email">
+                                <label for="loginPassword">password</label>
+                                <input type="password" id="loginPassword">
+                                <a href="/auth">New? Creat an Account</a>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="loginBtn">Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+            {{!-- <a href="/auth">login</a> --}}
+        {{!-- {{/if}} --}}
+    {{!-- banner section --}}
+    <section id="banner">
+        </section>
+
+    <section class="row justify-content-md-center">
+
+        <button class="col-sm writebtn " id="option1">Write a review</button>
+        {{#if loggedIn}}
+        <button class="col-sm writebtn logout"  id="logout">logout</button>
+        {{else}}
+        <button class="col-sm writebtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="option1">Login</button>
+        <!-- Modal -->
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -39,31 +76,12 @@
                     </div>
                 </div>
             </div>
-            {{!-- <a href="/auth">login</a> --}}
         {{/if}}
-    {{!-- banner section --}}
-    <section id="banner">
-        </section>
-
-    <section class="row justify-content-md-center">
-        <div class="col-sm" id="option1">
-            <div>
-                <p>Option 1</p>
-            </div>
-        </div>
-
-        <div class="col-sm" id="option2">
-            <div>
-                <p>Option 2</p>
-            </div>
-        </div>
-
-
-        <div class="col-sm" id="option3">
-            <div>
-                  <p>Option 3</p>
-            </div>
-        </div>
+        {{#if loggedIn}}
+        <button class="col-sm writebtn" id="option1">Profile</button>
+        {{else}}
+        <button class="col-sm writebtn" id="option1">Signup</button>
+        {{/if}}
 
     </section>
 
@@ -74,7 +92,9 @@
                 <div id="latest">
                     <h2>Latest Reviews</h2>
                 </div>
-                {{> review-details}}
+            {{#each reviews as |review|}}
+            {{> review-details}}
+            {{/each}}
             </div>
 
             <div class="latestreviews col-5">
