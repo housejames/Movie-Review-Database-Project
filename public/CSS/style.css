@@ -13,29 +13,87 @@ main{
 }
 
 footer{
-    background-color: #36323C;
+    background-color: #171717;
     height: 8vh;
 
 }
 
+#option1{
+  margin: 25px;
+  border: 3px solid #4D738A;
+  height: 150px;
+  max-width: 300px;
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+  padding: 35px;
+  font-size: 250%;
+  background-color: #194358;
+  background-image: url(../images/orange\ image\ for\ writing\ a\ review\ button\ 1\ \(1\).png);
+}
+
+#option2{
+  margin: 25px;
+  border: 3px solid #4D738A;
+  height: 150px;
+  max-width: 300px;
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+  padding: 35px;
+  font-size: 250%;
+  background-color: #194358;
+}
+
+#option3{
+  margin: 25px;
+  border: 3px solid #4D738A;
+  height: 150px;
+  max-width: 300px;
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+  padding: 35px;
+  font-size: 250%;
+  background-color: #194358;
+}
+#banner{
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  /* Add your background pattern here */
+  background-color: #313131;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.171) 2px, transparent 0);
+  background-size: 30px 30px;
+  background-position: -5px -5px
+}
 .logbtn{
     display: block;
     width: fit-content;
 }
 .latestreviews{
+    border: 3px solid #4D738A;
     margin: auto;
-    width: 45vw;
-    background-color: #333539;
+    /* width: 850px; */
+    background-color: #194358;
     border-radius: 15px;
     color: #F2ECFF
+    
 }
 
+#latest{
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
 .reviewcard{
     margin: 5px;
     border: 5px solid black;
     border-radius: 15px;
 }
 .reviewwrap{
+    margin-left: 50px;
+    margin-right: 50px;
     display: flex;
     justify-content: left;
 }

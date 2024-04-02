@@ -1,7 +1,8 @@
 <link rel="stylesheet" type="text/css" href="/css/jass.css">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 
- <header>
+
+<main class="">
     <div class="writebtnwrap">
         <button class="writebtn">Write A Review</button>
     </div>
@@ -40,21 +41,58 @@
             </div>
             {{!-- <a href="/auth">login</a> --}}
         {{/if}}
-</header>
+    {{!-- banner section --}}
+    <section id="banner">
+        </section>
 
-<main class="">
-    <section class="reviewwrap">
-        <div class="latestreviews">
-            <h2>Latest Reviews</h2>
-            {{#each reviews as |review|}}
-            {{> review-details}}
-            {{/each}}
+    <section class="row justify-content-md-center">
+        <div class="col-sm" id="option1">
+            <div>
+                <p>Option 1</p>
+            </div>
         </div>
+
+        <div class="col-sm" id="option2">
+            <div>
+                <p>Option 2</p>
+            </div>
+        </div>
+
+
+        <div class="col-sm" id="option3">
+            <div>
+                  <p>Option 3</p>
+            </div>
+        </div>
+
     </section>
 
+    <section>
+        <div class="row justify-content-around reviewwrap">
+
+            <div class="latestreviews col-5">
+                <div id="latest">
+                    <h2>Latest Reviews</h2>
+                </div>
+                {{> review-details}}
+            </div>
+
+            <div class="latestreviews col-5">
+                <div id="latest">
+                    <h2>Latest Comments</h2>
+                </div>
+                <div>
+                    {{!-- {{#each reviews as |review|}}
+                    {{> review-details}}
+                    {{/each}} --}}
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="">
 
     </section>
+    
 </main>
 
 <footer>
