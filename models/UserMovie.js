@@ -4,10 +4,10 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // Creates the class of 'Review', as an extention of a sequalize model
-class Review extends Model {}
+class UserMovie extends Model {}
 
 // The model for a review
-Review.init(
+UserMovie.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -15,37 +15,28 @@ Review.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
+    movie_id:{
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-    content: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Foreign key to link to the users id
-    user_id: {
-      type: DataTypes.INTEGER,
       references: {
-          model: 'user',
-          key: 'id'
-      }
+        model: 'movie',
+        key: 'id'
+    }
     },
-    // movie_id: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //       model: 'movie',
-    //       key: 'id'
-    //   }
-    // }
+    review_id: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'review',
+            key: 'id'
+        }
+      }
   },
   {
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'review',
+    modelName: 'usermovie',
   }
 )
 
 // Exports the model
-module.exports = Review;
+module.exports = UserMovie;

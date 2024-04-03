@@ -1,14 +1,14 @@
 // Imports express into a router variable
 const router = require('express').Router();
 // Imports the joined models
-const {User, Review} = require('../models/index');
+const {User, Review, Movie, UserMovie} = require('../models/index');
 
 // Route for main homepage
 router.get('/', async (req, res) => {
     try {
         const reviewData = await Review.findAll({
             // Adds the joined user model with the User attribute of username (User.username)
-            include: [{model: User, attributes:['username']}]
+            include: [{model: User, attributes:['username']}, {model: Movie, through: UserMovie}]
         })
         const reviews = reviewData.map((review) => review.get({ plain: true })
         );

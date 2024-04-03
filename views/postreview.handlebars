@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post Your Review</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/postpage.css">
     <style>
         /* Base styles */
         body {
             font-family: 'Arial', sans-serif;
-            line-height: 1.6;
             margin: 0;
             padding: 0;
             background-color: #121212; 
@@ -17,7 +17,7 @@
         }
 
         /* Form styles */
-        form {
+        .form {
             background: #242424; 
             max-width: 600px;
             margin: 2rem auto;
@@ -26,14 +26,14 @@
             border-radius: 8px;
         }
 
-        label {
+        .label {
             color: #ccc; 
             margin-bottom: 0.5rem;
             font-size: 1.2rem;
         }
 
-        input[type="text"],
-        textarea {
+        .inputjd[type="text"],
+        .textarea {
             background-color: #333; 
             color: #e0e0e0; 
             width: calc(100% - 1rem);
@@ -46,7 +46,7 @@
         }
 
         /* Adjusted submit button styles */
-        button[type='submit'] {
+        .button[type='submit'] {
             background-image: linear-gradient(to right, #333333, #555555); /* Dark gradient background */
             color: #ffffff;
             padding: 0.5rem 1.5rem;
@@ -64,13 +64,13 @@
             gap: 8px; /* Space between the icon and text */
         }
 
-        button[type='submit']:hover, button[type='submit']:focus {
+        .button[type='submit']:hover, button[type='submit']:focus {
             background-image: linear-gradient(to right, #555555, #777777);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
             transform: translateY(-2px);
         }
 
-        button[type='submit']:active {
+        .button[type='submit']:active {
             background-image: linear-gradient(to right, #222222, #444444);
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
             transform: translateY(1px);
@@ -90,19 +90,48 @@
             100% { transform: rotate(360deg); }
         }
 
-        button[type='submit'] i {
+        .button[type='submit'] i {
             font-size: 1rem;
         }
     </style>
 </head>
 <body>
-    <form class="postform" action="">
-        <label for="blogtitle">Title Your Review! :</label>
-        <input type="text" name="Title" id="blogtitle">
-        <label for="blogcontent">Write Your Thoughts! :</label>
-        <textarea name="Content" id="blogcontent" rows="8"></textarea>
-        <button type='submit' value='Submit'><i class="fas fa-film"></i> Submit Review</button>
-    </form>
+    <div class="row justify-content-around reviewwrap">
+
+
+    <section class="col-sm">
+     <form class="postform form ping" action="">
+        <label class="label" for="blogtitle">Title Your Review! :</label>
+        <input type="text" class="inputjd" name="Title" id="blogtitle">
+        <label class="label" for="blogcontent">Write Your Thoughts! :</label>
+        <textarea name="Content" class="textarea" id="blogcontent" rows="8"></textarea>
+        <button type='submit' class="button" value='Submit'><i class="fas fa-film"></i> Submit Review</button>
+     </form>
+    </section>
+
+
+<section class="col-sm">
+  <div class="search">
+    <div class="search-box">
+        <div class="search-field">
+            <input placeholder="Search Movies" id="moviesearch" class="input" type="text">
+                <div class="search-box-icon">
+                    <button class="btn-icon-content" id="search">
+                        <i class="search-icon">
+                            <svg xmlns="://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" fill="#fff"></path></svg>
+                        </i>
+                </button>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div id="test">
+
+  </div>
+</section>
+
+
     <script src="/JS/postLogic.js"></script>
+
 </body>
 </html>
