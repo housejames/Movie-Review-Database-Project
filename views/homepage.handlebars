@@ -1,8 +1,9 @@
 <link rel="stylesheet" type="text/css" href="/css/jass.css">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="../public/CSS/modal.css"
 
 
-<main class="">
+<main class="modal">
     {{!-- <div class="writebtnwrap">
         <button class="writebtn">Write A Review</button>
     </div> --}}
@@ -57,20 +58,22 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel"> User Login</h5>
+                            <h5 class="modal-title text-light" id="staticBackdropLabel">USER LOGIN</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form action="" id="login">
-                                <label for="loginEmail">email</label>
-                                <input type="text" id="loginEmail" placeholder="email">
-                                <label for="loginPassword">password</label>
-                                <input type="password" id="loginPassword">
-                                <a href="/auth">New? Creat an Account</a>
+                                <label for="loginEmail" class="text-light fw-bold">EMAIL</label><br><br>
+                                <input type="text" id="loginEmail" class="modal-dialog-centered" placeholder="email">
+                                <br><br>
+                                <label for="loginPassword" class="text-light fw-bold">PASSWORD</label><br><br>
+                                <input type="password" class="modal-dialog-centered" id="loginPassword" placeholder="password">
+                                <br>
+                                <a href="/auth">New? Create an Account!</a>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="loginBtn">Login</button>
                         </div>
                     </div>
