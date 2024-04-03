@@ -15,7 +15,7 @@ html {
 body {
   color: white;
   margin: 0;
-  font-size: 20px;
+  font-size: 1.2em;
   line-height: 1;
   background-size: cover;
   background-color: black;
@@ -25,10 +25,10 @@ body {
 #marquee {
   color: rgb(0, 0, 0);
   width: auto;
-  height: 98px;
+  height: 1em;
   margin: 20px auto;
   position: relative;
-  font-size: 100px;
+  font-size: 5em;
   font-family: "Limelight", sans-serif;
   text-align: center;
   text-transform: uppercase;
@@ -37,7 +37,7 @@ body {
 }
 #marquee .marquee_message {
   width: 100%;
-  height: 20px;
+  height: 1em;
   display: table;
 }
 #marquee .marquee_message > span {
@@ -67,7 +67,7 @@ body {
   border-radius: 5px;
   background-color: #320f42;
   animation-name: flicker;
-  animation-delay: 1.26s;
+  animation-delay: 0.07s;
   animation-duration: 6s;
   animation-direction: normal;
   animation-fill-mode: forwards;
@@ -100,5 +100,13 @@ body {
     background-color: #d000d0;
     background-image: linear-gradient(black, #320f42, black);
   }
+}
+@media screen and (max-width: 768px) {
+  header, main {
+    flex-direction: column;
+  }
+  #marquee {
+    font-size: 2em;
+    flex-direction: column;
+  }
 }/*# sourceMappingURL=header.css.map */
-
