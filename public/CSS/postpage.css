@@ -245,25 +245,4 @@ body {
           font-size: 1rem;
       }
 
-      /* Home button styles */
-     .home-button {
-          position: absolute;
-          top: 2rem;
-          right: 2rem;
-          background-color: transparent;
-          border: none;
-          color: #888;
-          font-size: 1.5rem;
-          cursor: pointer;
-          transition: color 0.3s ease, transform 0.2s ease;
-      }
-
-     .home-button:hover {
-          color: #ccc;
-          transform: translateY(-2px);
-      }
-
-     .home-button:active {
-          color: #fff;
-          transform: translateY(-2px) scale(0.95);
-      }
+     
