@@ -1,0 +1,39 @@
+/*# sourceMappingURL=modals.css.map */
+
+.modal { 
+    --bs-modal-border-color: purple; 
+    --bs-modal-border-width: 4px; 
+    --bs-modal-border-radius: var(--bs-border-radius-lg); 
+    --bs-modal-inner-border-radius: calc(var(--bs-border-radius-lg) - 6px); 
+    --bs-modal-header-padding-x: 1.0rem; 
+    --bs-modal-header-padding-y: 1.0rem; 
+    --bs-modal-header-padding: 1.4rem 1.4rem; 
+    --bs-modal-header-border-color: purple; 
+    --bs-modal-header-border-width: 3px; 
+    --bs-modal-title-line-height: 1.5; 
+    --bs-modal-footer-gap: 0.5rem; 
+    --bs-modal-footer-bg: ; 
+    --bs-modal-footer-border-color: purple; 
+    --bs-modal-footer-border-width: 3px; 
+    position: fixed;   
+    z-index: var(--bs-modal-zindex); 
+    display: none; 
+    width: 100%; 
+    height: 100%; 
+    overflow-x: hidden; 
+    overflow-y: auto;  
+  } 
+  .modal-content { 
+    position: relative; 
+    display: flex; 
+    flex-direction: column; 
+    width: 100%; 
+    color: black; 
+    pointer-events: auto; 
+    background-color: rgba(0, 0, 0, 0.85); 
+    background-clip: padding-box; 
+    border: var(--bs-modal-border-width) solid var(--bs-modal-border-color); 
+    border-radius: var(--bs-modal-border-radius); 
+    outline: 0; 
+  }
+  
