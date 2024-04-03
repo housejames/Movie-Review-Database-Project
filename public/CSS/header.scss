@@ -32,20 +32,21 @@ body {
   color: white;
   margin: 0;
   // padding: 30px;
-  font-size: 20px;
+  font-size: 1.2em;
   line-height: 1;
   background-size: cover;
   background-color: black;
   background-image: url("#{$ASSETS}film_texture_3.jpg");
 }
 
+
 #marquee {
   color: rgb(0, 0, 0);
   width: auto;
-  height: 98px;
+  height: 1em;
   margin: $neon_bar_height auto;
   position: relative;
-  font-size: 100px;
+  font-size: 5em;
   font-family: "Limelight", sans-serif;
   text-align: center;
   text-transform: uppercase;
@@ -73,7 +74,7 @@ body {
   
   .marquee_message {
     width: 100%;
-    height: 20px;
+    height: 1em;
     display: table;
     & > span {
       display: table-cell;
@@ -138,4 +139,15 @@ body {
       darken($neon_purple_off, 20%)
     );
 	}
+}
+
+@media screen and (max-width: 768px) {
+  header, main {
+    flex-direction: column;
+  }
+
+  #marquee {
+    font-size: 2em;
+    flex-direction: column;
+  }
 }
