@@ -7,6 +7,8 @@ router.post('/', async (req, res) => {
       const movieData = await Movie.create({
         id: req.body.movieid,
         name: req.body.movie_name,
+        release_date: req.body.movie_date,
+        poster: req.body.movie_poster
       });
       res.status(200).json(movieData);
     // Catch for errors  

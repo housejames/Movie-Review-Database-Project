@@ -2,6 +2,27 @@
     background-color: #36323C;
 } */
 
+#newRelease{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+#releaseTitle{
+  margin: auto;
+  max-width: 125px;
+  font-size: 75%;
+}
+
+#releaseCard{
+  margin: 8px;
+  height: 150px;
+  width: 100px;
+  margin-top:50px
+  
+}
+
+
 header{
     background-color: #4D585F;
     height: 10vh;

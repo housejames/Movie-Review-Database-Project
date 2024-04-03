@@ -12,9 +12,19 @@ router.get('/', async (req, res) => {
         })
         const reviews = reviewData.map((review) => review.get({ plain: true })
         );
+        apirequest = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2%7C3&release_date.gte=%7Bmin_date%7D&release_date.lte=%7Bmax_date%7D&api_key=9b2c15760bf8b5117d73ef873c45f644`
+        const omdbData = await fetch(apirequest)
+        let fetchedData = await omdbData.json()
+
+        for(let i = 0; i < fetchedData.results.length; i++){
+            if(fetchedData.results[i].vote_count < 150){
+                fetchedData.results.splice(i)
+
+            }
+        }
         // Renders the homepage with the data in reviews
         res.render('homepage', {
-        reviews, loggedIn: req.session.logged_in
+        reviews, fetchedData, loggedIn: req.session.logged_in
         });
     // Error catch    
     }catch (err) {

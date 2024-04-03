@@ -12,7 +12,7 @@ class Movie extends Model {}
 Movie.init(
   {
     id: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       unique: true,
@@ -21,6 +21,14 @@ Movie.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    release_date: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    poster: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
   },
   {
     sequelize,

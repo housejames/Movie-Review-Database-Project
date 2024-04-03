@@ -25,22 +25,27 @@ const userSeeds = [
   
   const movieSeeds = [
     {
-      id: "movie1",
-      name: "Godzilla x Kong"
+      id: 1,
+      name: "Godzilla x Kong",
+      release_date: "idk",
+      poster: "idk"
+
     },
     {
-      id: "movie2",
-      name: "Dune 2"
+      id: 2,
+      name: "Dune 2",
+      release_date: "idk",
+      poster: "idk"
     },
   ];
 
   const userMovieSeeds = [
     {
-      movie_id: "movie1",
+      movie_id: 1,
       review_id: 1,
     },
     {
-      movie_id: "movie2",
+      movie_id: 2,
       review_id: 2,
     },
   ]

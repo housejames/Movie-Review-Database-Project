@@ -1,5 +1,7 @@
 let movie_name;
 let movieid;
+let movie_poster;
+let movie_date;
 let pulledArray = []
 
 
@@ -18,7 +20,9 @@ async function newFormHandler(event) {
     method: 'POST',
     body: JSON.stringify({
       movieid,
-      movie_name
+      movie_name,
+      movie_date,
+      movie_poster
     }),
     headers: {
       'Content-Type': 'application/json',
@@ -111,7 +115,7 @@ async function newFormHandler(event) {
       div.setAttribute('class', `movieStyle`)
       img.setAttribute('src', `https://image.tmdb.org/t/p/w500${fetchedData.results[i].poster_path}`)
       img.setAttribute('width', '125')
-      img.setAttribute('id', `${fetchedData.results[i].title}`)
+      img.setAttribute('id', `${fetchedData.results[i].id}`)
       img.setAttribute('class', `getById`)
       img.setAttribute('height', '225')
       name.textContent = `${fetchedData.results[i].title}`
@@ -133,16 +137,19 @@ function pickAMovie(event){
       previousCards.textContent = ""
     }
     let idName = event.target.id
-    console.log(idName)
     let name = document.querySelector('.titleName')
     name.setAttribute('id', `${idName}`)
     name.setAttribute('class', 'nuke2 titleName')
-    name.textContent = `Reviewing: ${idName}`
-
+    // name.textContent = `Reviewing: ${idName}`
+    console.log('123')
     for(let i = 0; i < pulledArray.results.length; i++){
-      if(pulledArray.results[i].title === idName){
+      if(pulledArray.results[i].id == idName){
+        console.log('test')
+        name.textContent = `Reviewing: ${pulledArray.results[i].title}`
         movie_name = pulledArray.results[i].title
         movieid = pulledArray.results[i].id
+        movie_date = pulledArray.results[i].release_date
+        movie_poster = `https://image.tmdb.org/t/p/w500/${fetchedData.results[i].poster_path}`
       }
       continue
     }
