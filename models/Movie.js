@@ -15,12 +15,11 @@ Movie.init(
       type: DataTypes.STRING,
       allowNull: false,
       primaryKey: true,
+      unique: true,
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
-
     },
   },
   {

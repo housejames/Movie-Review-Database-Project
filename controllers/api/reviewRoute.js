@@ -26,10 +26,8 @@ router.post('/', async (req, res) => {
     const reviewData = await Review.create({
       title: req.body.review_title,
       content: req.body.review_content,
-      user_id: req.body.user_id
+      user_id: req.session.user_id
     });
-    console.log('-------------------', req.body.movieid)
-    console.log('-------------------', reviewData.id)
     link = {
       review_id: reviewData.id ,
       movie_id: req.body.movieid

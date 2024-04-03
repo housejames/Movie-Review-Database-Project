@@ -2,11 +2,12 @@ const router = require('express').Router();
 
 require('dotenv').config();
 const apiKey = `${process.env.API_KEY}`
-const apiDomain = `${process.env.API_DOMAIN}`
+const searchQueryDomain = `${process.env.API_SEARCH_DOMAIN}`
 
 router.get('/:id', async (req, res) => {
     try {
-        apirequest = `${apiDomain}${apiKey}&s=${req.params.id}`
+        // apirequest = `${apiDomain}${apiKey}&s=${req.params.id}`
+        apirequest = `${searchQueryDomain}?query=${req.params.id}&include_adult=false&language=en-US&page=1&api_key=${apiKey}`
         const omdbData = await fetch(apirequest)
         let fetchedData = await omdbData.json()
         // console.log(fetchedData)
