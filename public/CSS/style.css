@@ -30,14 +30,11 @@ header{
 
 main{
     background-color: #171717;
-
 }
 
-/* footer{
-  margin: 25px;
-  background-color: #171717;
-  height: 6vh;
-} */
+p{
+  padding: 10px;
+}
 
 #option1{
   margin: 25px;
@@ -244,3 +241,49 @@ main{
   }
   
   /*             ^^^ End of Button ui style ^^^ */
+
+        /* Home button styles */
+        .home-button {
+          position: absolute;
+          top: 2rem;
+          right: 2rem;
+          background-color: transparent;
+          border: none;
+          color: black;
+          font-size: 1.5rem;
+          cursor: pointer;
+          transition: color 0.3s ease, transform 0.2s ease;
+      }
+
+     .home-button:hover {
+          color: purple;
+          transform: translateY(-2px);
+      }
+
+     .home-button:active {
+          color: purple;
+          transform: translateY(-2px) scale(0.95);
+      }
+
+      /* User button styles */
+     .user-button {
+      position: absolute;
+      top: 2rem;
+      right: 5rem;
+      background-color: transparent;
+      border: none;
+      color: black;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.2s ease;
+  }
+
+ .user-button:hover {
+      color: purple;
+      transform: translateY(-2px);
+  }
+
+ .user-button:active {
+      color: purple;
+      transform: translateY(-2px) scale(0.95);
+  }
