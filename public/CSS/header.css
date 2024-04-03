@@ -67,7 +67,7 @@ body {
   border-radius: 5px;
   background-color: #320f42;
   animation-name: flicker;
-  animation-delay: 2.44s;
+  animation-delay: 0.07s;
   animation-duration: 6s;
   animation-direction: normal;
   animation-fill-mode: forwards;
