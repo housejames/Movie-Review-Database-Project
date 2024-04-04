@@ -31,13 +31,22 @@ async function newFormHandler(event) {
 
     const review_title = document.querySelector('#blogtitle').value;
     const review_content = document.querySelector('#blogcontent').value;
-  
+
+    var radio = document.getElementsByName('rate');
+            for (i = 0; i < radio.length; i++) {
+                if (radio[i].checked){
+                  review_rating = radio[i].value
+                }
+                continue
+              }
+                console.log(review_rating)
     // Send fetch request to add a new dish
     const response = await fetch('/api/reviews', {
       method: 'POST',
       body: JSON.stringify({
         review_title,
         review_content,
+        review_rating,
         movieid
       }),
       headers: {

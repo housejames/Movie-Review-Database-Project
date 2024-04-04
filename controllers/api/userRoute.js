@@ -1,6 +1,6 @@
 const router = require('express').Router();
 // Import the User model from the models folder
-const { User } = require('../../models');
+const { User, Review, Movie, UserMovie, UserFavorite, UserWatchList } = require('../../models');
 
 // If a POST request is made to /api/users, a new user is created. The user id and logged in state is saved to the session within the request object.
 router.post('/', async (req, res) => {
@@ -23,6 +23,7 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         const userData = await User.findAll({
+        include: [{model: Review}, {model: Movie, through: UserFavorite, attributes:['name', 'release_date', 'poster'], as: 'favorite'}, {model: Movie, attributes:['name', 'release_date', 'poster'], through: UserWatchList, as: 'watch_list'}],
         attributes: { exclude: ['password']}
         })
         res.status(200).json(userData)

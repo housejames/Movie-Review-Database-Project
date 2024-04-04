@@ -3,19 +3,24 @@ const router = require('express').Router();
 // Imports the joined models
 const {User, Review, Movie, UserMovie} = require('../models/index');
 
+require('dotenv').config();
+const apiKey = `${process.env.API_KEY}`
+const newReleaseDomain = `${process.env.API_RELEASE_DOMAIN}`
+
 // Route for main homepage
 router.get('/', async (req, res) => {
     try {
         const reviewData = await Review.findAll({
             // Adds the joined user model with the User attribute of username (User.username)
-            include: [{model: User, attributes:['username']}, {model: Movie, through: UserMovie}]
+            include: [{model: User, attributes:['username',]}, {model: Movie, through: UserMovie, attributes: ['name', 'poster']}]
         })
-        const reviews = reviewData.map((review) => review.get({ plain: true })
-        );
-        apirequest = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2%7C3&release_date.gte=%7Bmin_date%7D&release_date.lte=%7Bmax_date%7D&api_key=9b2c15760bf8b5117d73ef873c45f644`
+        const reviewsArray = reviewData.map((review) => review.get({ plain: true }));
+        let sliced = reviewsArray.slice(-5)
+        let reviews = sliced.reverse()
+      
+        apirequest = `${newReleaseDomain}${apiKey}`
         const omdbData = await fetch(apirequest)
         let fetchedData = await omdbData.json()
-
         for(let i = 0; i < fetchedData.results.length; i++){
             if(fetchedData.results[i].vote_count < 150){
                 fetchedData.results.splice(i)

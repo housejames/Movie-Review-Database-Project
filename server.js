@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 3002;
 
 // Set up a sessions
 const sess = {
-    secret: 'Super secret secret',
+    secret: 'Keep it secret, keep it safe!',
     resave: false,
     saveUninitialized: false,
   };

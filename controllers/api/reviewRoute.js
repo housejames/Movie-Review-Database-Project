@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
   try {
     const reviewData = await Review.findAll({
         // Adds the username from the User model through the linked id
-        include: [{model: User, attributes:['username']}, {model: Movie, attributes: ['name']}]
+        include: [{model: User, attributes:['username']}, {model: Movie}]
     })
     // Convert the object into more readable data
     const reviews = reviewData.map((review) => review.get({ plain: true }));
@@ -26,6 +26,7 @@ router.post('/', async (req, res) => {
     const reviewData = await Review.create({
       title: req.body.review_title,
       content: req.body.review_content,
+      rating: req.body.review_rating,
       user_id: req.session.user_id
     });
     link = {
