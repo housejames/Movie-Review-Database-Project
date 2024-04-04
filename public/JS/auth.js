@@ -18,7 +18,7 @@ signupForm.addEventListener("submit",(e)=>{
          
            location.href = "/profile"
         } else {
-            alert("failed signup")
+            alert("Please fill out all fields")
         }
     })
 })
