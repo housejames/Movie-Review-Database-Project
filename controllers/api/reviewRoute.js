@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     const reviews = reviewData.map((review) => review.get({ plain: true }));
     res.json(reviews)
 // Catch for errors    
-}catch (err) {
+  }catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
@@ -21,7 +21,6 @@ router.get('/', async (req, res) => {
 // Route to post a review
 router.post('/', async (req, res) => {
   try {
-    
     // Pulls data from a post fetch request made in ../../public/JS/postLogic
     const reviewData = await Review.create({
       title: req.body.review_title,
@@ -29,6 +28,7 @@ router.post('/', async (req, res) => {
       rating: req.body.review_rating,
       user_id: req.session.user_id
     });
+    // Also creates a UserMovie to link the movie to the review
     link = {
       review_id: reviewData.id ,
       movie_id: req.body.movieid

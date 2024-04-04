@@ -17,7 +17,12 @@ if(!sessionStorage.loged_in){
         if(res.ok){
             document.location.replace('/')
         } else {
-            alert("failed login")
+            // alert('ahhh')
+            let modal = document.querySelector('#modalAlert')
+            let incorrect = document.createElement('h6')
+            incorrect.setAttribute('class', 'text-danger' )
+            incorrect.textContent = 'Incorrect Email or Password'
+            modal.append(incorrect)
         }
     })
 })

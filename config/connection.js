@@ -1,8 +1,8 @@
-// boilerplate connection to postgres through sequelize
+// Boilerplate connection to postgres through sequelize
 const Sequelize = require('sequelize');
 require('dotenv').config();
 
-
+// Boilerplate sequalize model
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
