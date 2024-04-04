@@ -1,11 +1,12 @@
 const router = require('express').Router();
 
+// Imports the routes
 const userRoutes = require('./userRoute');
 const reviewRoute = require('./reviewRoute');
 const omdbRoute = require('./omdb');
 const movieRoute = require('./movieRoutes');
 
-//routes to respective js pages
+// Routes to creates specific routes based of off url to respective js pages
 router.use('/users', userRoutes);
 router.use('/reviews', reviewRoute);
 router.use('/omdb', omdbRoute);

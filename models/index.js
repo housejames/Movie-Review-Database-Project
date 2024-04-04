@@ -3,6 +3,8 @@ const User = require ('./User');
 const Review = require('./Review');
 const Movie = require('./Movie');
 const UserMovie = require('./UserMovie');
+const UserWatchList = require('./UserWatchList');
+const UserFavorite = require('./UserFavorites');
 
 // Connects the user_id to the review they make
 Review.belongsTo(User, {
@@ -13,10 +15,6 @@ User.hasMany(Review, {
 });
 
 
-// Review.hasOne(Movie, {
-//     through: 'UserMovie',
-//     foreignKey: 'movie_id'
-// });
 
 Movie.belongsToMany(Review, {
     through: UserMovie,
@@ -30,10 +28,36 @@ Review.belongsToMany(Movie, {
 
 
 
+Movie.belongsToMany(User, {
+    through: UserFavorite,
+    as: 'favorite',
+    foreignKey: 'movie_id'
+});
+
+User.belongsToMany(Movie, {
+    through: UserFavorite,
+    as: 'favorite',
+    foreignKey: 'user_id'
+});
+
+
+
+Movie.belongsToMany(User, {
+    through: UserWatchList,
+    as: 'watch_list',
+    foreignKey: 'movie_id'
+});
+
+User.belongsToMany(Movie, {
+    through: UserWatchList,
+    as: 'watch_list',
+    foreignKey: 'user_id'
+});
+
 
 
 
 
 
 // Exports the newly joined models
-module.exports = {Review, User, Movie, UserMovie}
+module.exports = {Review, User, Movie, UserMovie, UserFavorite, UserWatchList}

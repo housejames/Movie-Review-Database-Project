@@ -1,14 +1,16 @@
 <link rel="stylesheet" type="text/css" href="/css/jass.css">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 
+<input type="hidden" id="hdnSession" data-value="@Request.RequestContext.HttpContext.Session['someKey']" />
+
     <section id="banner">
         </section>
 
     <section class="row justify-content-md-center">
 
-        <button class="col-sm writebtn " id="option1">Write a review</button>
         {{#if loggedIn}}
-        <button class="col-sm writebtn logout"  id="logout">logout</button>
+        <button class="col-sm writebtn writebtnmain" id="option1">Write a review</button>
+        <button class="col-sm writebtn logout"  id="logout">Logout</button>
         {{else}}
         <button class="col-sm writebtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="option1">Login</button>
         <!-- Modal -->
@@ -27,40 +29,56 @@
                                 <label for="loginPassword" class="text-light">PASSWORD</label><br><br>
                                 <input type="password" class="modal-dialog-centered" id="loginPassword" placeholder="password">
                                 <br>
+                                <div id="modalAlert"></div>
+                                <br>
                                 <a href="/auth">New? Create an Account!</a>
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="loginBtn">Login</button>
+                            <button type="button" class="btn btn-primary" id="loginBtn">Login</button>
                         </div>
                     </div>
                 </div>
             </div>
         {{/if}}
         {{#if loggedIn}}
-        <button class="col-sm writebtn" id="option1">Profile</button>
         {{else}}
-        <button class="col-sm writebtn" id="option1">Signup</button>
+        <button class="col-sm writebtn signupp" id="option1">Signup</button>
         {{/if}}
 
     </section>
+    <section class="row">
+        <div id="newRelease">
+            <div class="newInTheaters">
+                <h2>New Releases:</h2>
+            </div>
+        {{#each fetchedData.results as |movie|}}
+        {{> release-details}}
+        {{/each}}
+        </div>
 
+
+
+
+    </section>
     <section>
         <div class="row justify-content-around reviewwrap">
-
-            <div class="latestreviews col-5">
-                <div id="latest">
-                    <h2>Latest Reviews</h2>
+            {{!-- <div class="newInTheaters">
+            <h2>Latest Reviews</h2>
+            </div> --}}
+            <div class="latestreviews col-12">
+                 <div class="newInTheaters">
+                    <h2>Latest Reviews:</h2>
                 </div>
             {{#each reviews as |review|}}
             {{> review-details}}
             {{/each}}
             </div>
 
-            <div class="latestreviews col-5">
+            <div class="latestreviews col-12">
                 <div id="latest">
-                    <h2>Latest Comments</h2>
+                    <h2>Search for a movie or review</h2>
                 </div>
                 <div>
                     {{!-- {{#each reviews as |review|}}
@@ -105,4 +123,7 @@
 <script src="/JS/homepage.js"></script>
 {{#if loggedIn}}
     <script src="/js/logout.js"></script>
+    <script src="/JS/writeReviewLogic.js"></script>
+    {{else}}
+    <script src="/JS/loginLogic.js"></script>
 {{/if}}

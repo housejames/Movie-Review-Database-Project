@@ -3,18 +3,33 @@ const router = require('express').Router();
 // Imports the joined models
 const {User, Review, Movie, UserMovie} = require('../models/index');
 
+require('dotenv').config();
+const apiKey = `${process.env.API_KEY}`
+const newReleaseDomain = `${process.env.API_RELEASE_DOMAIN}`
+
 // Route for main homepage
 router.get('/', async (req, res) => {
     try {
         const reviewData = await Review.findAll({
             // Adds the joined user model with the User attribute of username (User.username)
-            include: [{model: User, attributes:['username']}, {model: Movie, through: UserMovie}]
+            include: [{model: User, attributes:['username',]}, {model: Movie, through: UserMovie, attributes: ['name', 'poster']}]
         })
-        const reviews = reviewData.map((review) => review.get({ plain: true })
-        );
+        const reviewsArray = reviewData.map((review) => review.get({ plain: true }));
+        let sliced = reviewsArray.slice(-5)
+        let reviews = sliced.reverse()
+      
+        apirequest = `${newReleaseDomain}${apiKey}`
+        const omdbData = await fetch(apirequest)
+        let fetchedData = await omdbData.json()
+        for(let i = 0; i < fetchedData.results.length; i++){
+            if(fetchedData.results[i].vote_count < 150){
+                fetchedData.results.splice(i)
+
+            }
+        }
         // Renders the homepage with the data in reviews
         res.render('homepage', {
-        reviews, loggedIn: req.session.logged_in
+        reviews, fetchedData, loggedIn: req.session.logged_in
         });
     // Error catch    
     }catch (err) {

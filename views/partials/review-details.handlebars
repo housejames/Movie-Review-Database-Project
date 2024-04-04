@@ -1,12 +1,26 @@
 <section class="reviewcard">
     <div>
-        <p>{{movies.[0].name}}</p>
-        <h1 id="reviewtitle">
-             {{title}}
-        </h1>
-        <p id="reviewcontent">
-            {{content}}
-        </p>
-        <h6 id="reviewuser">Posted by: {{user.username}}</h6>
+        <div class="row  justify-content-around margin">
+            <div class=" reviewPoster col-1">
+                <img src="{{movies.[0].poster}}" alt="" width="165" height="250">
+            </div>
+            <div class="row reel col-9">
+                <div class="nameRating1 col-2">
+                    <p class="reviewMovie">{{movies.[0].name}}</p>
+                </div>
+                <div class="col-8" id="reviewtitle">
+                    <h1>{{title}}</h1>
+                    <h6 id="reviewuser">A Reel Radar Review by: {{user.username}}</h6>
+                </div>
+                <div class="nameRating2 col-2">
+                    <p class="reviewMovie">User Rating: {{rating}}/5</p>
+                </div>
+                                  <p id="reviewcontent">
+                {{content}}
+            </p>
+            </div>
+  
+
+        </div>
     </div>
 </section>
