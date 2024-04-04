@@ -171,8 +171,9 @@ p{
     word-wrap: break-word;
   }
 }
-.reel{
-}
+/* .reel{
+} */
+
 .nameRating1{
 display: flex;
 justify-content: center;
