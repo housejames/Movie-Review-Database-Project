@@ -5,7 +5,6 @@ let movie_date;
 let pulledArray = []
 
 
-// https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&release_date.gte={min_date}&release_date.lte={max_date}&api_key=9b2c15760bf8b5117d73ef873c45f644
 async function newFormHandler(event) {
   event.preventDefault();
 

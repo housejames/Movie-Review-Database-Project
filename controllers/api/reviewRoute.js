@@ -26,14 +26,15 @@ router.post('/', async (req, res) => {
       title: req.body.review_title,
       content: req.body.review_content,
       rating: req.body.review_rating,
-      user_id: req.session.user_id
+      user_id: req.session.user_id,
+      movie_id: req.body.movieid
     });
     // Also creates a UserMovie to link the movie to the review
-    link = {
-      review_id: reviewData.id ,
-      movie_id: req.body.movieid
-    }
-    UserMovie.create(link)
+    // link = {
+    //   review_id: reviewData.id ,
+    //   movie_id: req.body.movieid
+    // }
+    // UserMovie.create(link)
     res.status(200).json(reviewData);
   // Catch for errors  
   } catch (err) {

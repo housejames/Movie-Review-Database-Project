@@ -16,7 +16,7 @@ UserWatchList.init(
       autoIncrement: true,
     },
     movie_id:{
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       references: {
         model: 'movie',
         key: 'id'

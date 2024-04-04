@@ -16,16 +16,26 @@ User.hasMany(Review, {
 
 
 
-Movie.belongsToMany(Review, {
-    through: UserMovie,
+
+Movie.hasMany(Review, {
     foreignKey: 'movie_id'
-});
+})
 
-Review.belongsToMany(Movie, {
-    through: UserMovie,
-    foreignKey: 'review_id'
-});
+Review.belongsTo(Movie, {
+    foreignKey: 'movie_id'
+})
 
+
+
+// Movie.belongsToMany(Review, {
+//     through: UserMovie,
+//     foreignKey: 'movie_id'
+// });
+
+// Review.belongsToMany(Movie, {
+//     through: UserMovie,
+//     foreignKey: 'review_id'
+// });
 
 
 Movie.belongsToMany(User, {
