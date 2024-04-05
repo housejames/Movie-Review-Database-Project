@@ -18,6 +18,19 @@ router.get('/', async (req, res) => {
   }
 })
 
+router.delete('/:id', async (req, res) => {
+  try {
+    const data = await Review.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.json()
+  }catch (err) {
+      res.status(500).json(err);
+  }
+});
+
 // Route to post a review
 router.post('/', async (req, res) => {
   try {

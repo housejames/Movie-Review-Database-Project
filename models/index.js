@@ -27,17 +27,6 @@ Review.belongsTo(Movie, {
 
 
 
-// Movie.belongsToMany(Review, {
-//     through: UserMovie,
-//     foreignKey: 'movie_id'
-// });
-
-// Review.belongsToMany(Movie, {
-//     through: UserMovie,
-//     foreignKey: 'review_id'
-// });
-
-
 Movie.belongsToMany(User, {
     through: UserFavorite,
     as: 'favorite',
@@ -51,7 +40,6 @@ User.belongsToMany(Movie, {
 });
 
 
-
 Movie.belongsToMany(User, {
     through: UserWatchList,
     as: 'watch_list',
@@ -63,6 +51,7 @@ User.belongsToMany(Movie, {
     as: 'watch_list',
     foreignKey: 'user_id'
 });
+
 
 
 

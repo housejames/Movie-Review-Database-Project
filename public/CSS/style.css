@@ -11,6 +11,12 @@
   width: 80vw;
 }
 
+.newrleaserow{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 
 #releaseTitle{
   text-align: center;
@@ -31,7 +37,7 @@
 .newInTheaters{
   text-align: left;
   margin-top: 25px;
-  width: 1500px;
+  /* width: 1500px; */
 }
 
 header{
