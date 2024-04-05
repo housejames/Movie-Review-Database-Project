@@ -541,3 +541,11 @@ border-bottom: 7px dashed grey;
   top: 7px;
   right: 15px;
 }
+
+@media screen and (max-width: 768px) {
+  *:not(#newRelease) {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  }
+}
