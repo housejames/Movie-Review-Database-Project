@@ -8,44 +8,10 @@
 </head>
 <body>
   <div class="profile-container row">
-
-
-
-    <div class="col-6">
-      <h2 class="userBoxes" >Favorites<button data-bs-toggle="modal" data-bs-target="#favorite" class="addBtn" >+</button></h2>
-      <div class="favorites-box">
-        <!-- Display user's favorite movies here -->
-        {{#each favorite as |favorite|}}
-        <div class="favorite-movie">
-          <button id="{{id}}" class="remove removeFav">X</button>
-          <img src="{{poster}}" alt="Movie Poster" class="poster" >
-          <h3>{{name}}</h3>
-        </div>
-        {{/each}}
-        <!-- More favorite movie items as needed -->
-      </div>
-      </div>
-
-      <div class="col-6">
-      <h2 class="userBoxes" >Watchlist<button data-bs-toggle="modal" data-bs-target="#watchlist" class="addBtn" >+</button></h2>
-      <div class="watchlist-box">
-        {{#each watch_list as |watchlist|}}
-        <!-- Display user's watchlist here -->
-        <div class="watchlist-item">
-          <button id="{{id}}" class="remove removewl">X</button>
-          <img src="{{poster}}" alt="Movie Poster" class="poster" >
-          <h3>{{name}}</h3>
-        </div>
-         {{/each}}
-        <!-- More watchlist items as needed -->
-      </div>
-    </div>
-  
-
-  <div class="col-6">
-  <h2 class="userBoxes" >Reviews<button class="addBtn"><a href="/review">+</a></button></h2>
+<div class="col-6">
+  <h2 class="userBoxes" >Reviews</h2>
 <div id="accordion" class="">
-{{#each reviews as |review|}}
+{{#each parsedUserData.[0].reviews as |review|}}
   <div class="card expandable">
     <div class="card-header row">
       <h5 class="mb-0 col-10">
@@ -53,36 +19,50 @@
           {{title}}
         </button>
       </h5>
-      <button class="delete col-2"><img id="{{id}}" class="trashcan" src="/images/1f5d1.png" width="35px" height="35px" alt=""></button>
     </div>
 
     <div id="collapse{{id}}" class="collapse" aria-bs-labelledby="heading{{id}}" data-parent="#accordion">
       <div class="card-body">
         <h6 class="revealedLabel">Content:</h6>
-        <textarea name="" id="123" cols="75" rows="15">{{content}}</textarea>
+        <p name="" id="123" cols="75" rows="15">{{content}}</p>
           <br><br><br>
         <h6>Rating: </h6>
-        <textarea name="" id="" cols="1" rows="1">{{rating}}</textarea>
+        <p name="" id="" cols="1" rows="1">{{rating}}/5</p>
       </div>
     </div>
   </div>
   {{/each}}
+  
 </div>
 </div>
+    <div class="col-6">
+      <h2 class="userBoxes" >Favorites</h2>
+      <div class="favorites-box">
+        <!-- Display user's favorite movies here -->
+        {{#each parsedUserData.[0].favorite as |favorite|}}
+        <div class="favorite-movie">
+          <img src="{{poster}}" alt="Movie Poster" class="poster" >
+          <h3>{{name}}</h3>
+        </div>
+        {{/each}}
+        <!-- More favorite movie items as needed -->
+      </div>
 
+      <h2 class="userBoxes" >Watchlist</h2>
+      <div class="watchlist-box">
+        {{#each parsedUserData.[0].watch_list as |watchlist|}}
+        <!-- Display user's watchlist here -->
+        <div class="watchlist-item">
 
-  <div class="col-6">
-      <h2 class="userBoxes" >User Info<button data-bs-toggle="modal" data-bs-target="#watchlist" class="editBtn">✏️</button></h2>
-      <div class="watchlist-box row">
-        <p class="col-12">{{username}}</p>
-        <p class="col-12">{{email}}</p>
-        <p class="col-12">{{password}}</p>
+          <img src="{{poster}}" alt="Movie Poster" class="poster" >
+          <h3>{{name}}</h3>
+        </div>
+         {{/each}}
         <!-- More watchlist items as needed -->
       </div>
     </div>
 
-</div>
-
+  </div>
   <div class="header-icons">
         <a href="/" class="home-button"><i class="fas fa-home"></i></a>
     </div>

@@ -25,7 +25,14 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         const userData = await User.findAll({
-        include: [{model: Review}, {model: Movie, through: UserFavorite, attributes:['name', 'release_date', 'poster'], as: 'favorite'}, {model: Movie, attributes:['name', 'release_date', 'poster'], through: UserWatchList, as: 'watch_list'}],
+        include: [{model: Review}, {
+          model: Movie, through: UserFavorite, 
+          attributes:['name', 'release_date', 'poster'], as: 'favorite'
+        }, {
+          model: Movie, 
+          attributes:['name', 'release_date', 'poster'], 
+          through: UserWatchList, as: 'watch_list'}
+        ],
         attributes: { exclude: ['password']}
         })
         res.status(200).json(userData)
