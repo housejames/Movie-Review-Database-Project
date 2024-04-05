@@ -7,6 +7,11 @@ const userSeeds = [
       email: "samuelfullerca@gmail.com",
       password: "eightlong"
     },
+    {
+      username: "SaltyDave",  
+      email: "dave@dave.com",
+      password: "Movies123"
+    }
   ];
 
   const movieSeeds = [
@@ -22,12 +27,61 @@ const userSeeds = [
       release_date: "2024-02-27",
       poster: "https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg"
     },
+    {
+      id: 926,
+      name: "Galaxy Quest",
+      release_date: "1999-12-25",
+      poster: "https://image.tmdb.org/t/p/w500/fZXSwgZknp81vmciTb86rw0MejV.jpg"
+    },
+    {
+      id: 9340,
+      name: "The Goonies",
+      release_date: "1985-06-07",
+      poster: "https://image.tmdb.org/t/p/w500/eBU7gCjTCj9n2LTxvCSIXXOvHkD.jpg"
+    },
+    {
+      id: 329,
+      name: "Jurassic Park",
+      release_date: "1993-06-11",
+      poster: "https://image.tmdb.org/t/p/w500/b1xCNnyrPebIc7EWNZIa6jhb1Ww.jpg"
+    },
+    {
+      id: 533535,
+      name: "Deadpool & Wolverine",
+      release_date: "2024-07-24",
+      poster: "https://image.tmdb.org/t/p/w500/uxBHXaoOvAwy4NpPpP7nNx2rXYQ.jpg"
+    },
+    {
+      id: 365177,
+      name: "Borderlands",
+      release_date: "2024-08-07",
+      poster: "https://image.tmdb.org/t/p/w500/865DntZzOdX6rLMd405R0nFkLmL.jpg"
+    },
+    {
+      id: 1011985,
+      name: "Kung Fu Panda 4",
+      release_date: "2024-03-02",
+      poster: "https://image.tmdb.org/t/p/w500/kDp1vUBnMpe8ak4rjgl3cLELqjU.jpg"
+    },
+    
   ];
 
   const userFavoriteSeeds= [
     {
       movie_id: 693134,
       user_id: 1,
+    },
+    {
+      movie_id: 926,
+      user_id: 2,
+    },
+    {
+      movie_id: 9340,
+      user_id: 2,
+    },
+    {
+      movie_id: 329,
+      user_id: 2,
     },
   ]
 
@@ -36,6 +90,23 @@ const userSeeds = [
       movie_id: 823464,
       user_id: 1,
     },
+    {
+      movie_id: 1011985,
+      user_id: 1,
+    },
+    {
+      movie_id: 1011985,
+      user_id: 2,
+    },
+    {
+      movie_id: 365177,
+      user_id: 2,
+    },
+    {
+      movie_id: 533535,
+      user_id: 2,
+    },
+
   ]
   const reviewSeeds = [
     {
@@ -51,6 +122,13 @@ const userSeeds = [
       rating: 5,
       user_id: 1,
       movie_id: 693134
+    },
+    {
+      title: "In Space, No One Can Hear You Laugh: A Galaxy Quest Review",
+      content: "An epic cast of 90's all stars, this movie brings loads of action, adventure, and comedy together in this fun, family-friendly movie. Galaxy Quest has become a cult classic and is referred to as one of the greatest Star Trek movies of all time for good reason. Never give up, never surrender!",
+      rating: 5,
+      user_id: 2,
+      movie_id: 926
     },
   ];
 

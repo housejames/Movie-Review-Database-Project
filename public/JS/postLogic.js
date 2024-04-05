@@ -65,23 +65,6 @@ async function newFormHandler(event) {
     .querySelector('.postform')
     .addEventListener('submit', newFormHandler);
 
-// async function apiFetch(event) {
-//   event.preventDefault();
-//   const movieToSearch = document.querySelector('#moviesearch').value;
-//   let userSearch = movieToSearch.replace(/\s/g, '+');
-
-//   // Send fetch request to add a new dish
-//   const response = await fetch(`/api/omdb/${userSearch}`, {
-//     method: 'GET',
-//   });
-//   const omdbData = await response.json() 
-//   if (response.ok) {
-//     pulledArray = omdbData
-//     console.log(pulledArray)
-//   } else {
-//     alert('Post Failed!');
-//   }
-// }
 
   searchclick = document.querySelector('#search')
   searchclick.addEventListener('click', async (event)=>{
