@@ -1,7 +1,7 @@
       /* Home button styles */
       .home-button {
         position: absolute;
-        top: 2rem;
+        top: 3rem;
         right: 2rem;
         background-color: transparent;
         border: none;
@@ -24,7 +24,7 @@
     /* User button styles */
    .user-button {
     position: absolute;
-    top: 2rem;
+    top:3rem;
     right: 5rem;
     background-color: transparent;
     border: none;
