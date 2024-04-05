@@ -13,7 +13,7 @@ const helpers = require('./utils/helpers');
 
 // Creates the server at the environment variable or port 3001
 const app = express();
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3001;
 
 // Set up a sessions
 const sess = {
