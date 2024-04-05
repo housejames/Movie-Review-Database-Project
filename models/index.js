@@ -8,7 +8,7 @@ const UserFavorite = require('./UserFavorites');
 
 // Connects the user_id to the review they make
 Review.belongsTo(User, {
-    foreignKey: 'user_id'
+    foreignKey: 'user_id',
 });
 User.hasMany(Review, {
     foreignKey: 'user_id'
