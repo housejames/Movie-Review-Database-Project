@@ -34,7 +34,7 @@
     outline: 0; 
   }
 
-  .btn {
+  .btn, .btn-close {
     background-color: purple;
     color: white;
   }
