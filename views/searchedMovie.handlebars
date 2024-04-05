@@ -1,8 +1,71 @@
-<p>TEST!</p>
-<p>{{parsedMovieData.[0].name}}</p>
-<p>{{parsedMovieData.[0].reviews.[0].title}}</p>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212; 
+            color: #ffffff; 
+            margin: 0;
+            padding: 20px;
+        }
+        .movie-container {
+            display: flex;
+            align-items: flex-start;
+        }
+        .movie-poster {
+            flex: 1;
+            padding-right: 20px;
+        }
+        .movie-poster img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .movie-details {
+            flex: 3;
+        }
+        .movie-details > div {
+            background-color: #1a1a1a; 
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
+            color: #ccc; 
+        }
 
-<img src="{{parsedMovieData.[0].poster}}" alt="">
+        @media (max-width: 768px) {
+    .movie-container {
+        flex-direction: column;
+    }
+    .movie-poster, .movie-details {
+        max-width: 100%;
+        flex-basis: auto;
+    }
+}
+.home-button {
+top: 56px
+    
+}
+    </style>
+</head>
+<body>
 
+<div class="movie-container">
+    <div class="movie-poster">
+        <img src="{{parsedMovieData.[0].poster}}" alt="">
+    </div>
+    <div class="movie-details">
+        {{#each parsedMovieData as |movie|}}
+            <div>
+                {{> searched-details}}
+            </div>
+        {{/each}}
+    </div>
+</div>
 
+ <a href="/" class="home-button"><i class="fas fa-home"></i></a>
 
+</body>
+</html>
