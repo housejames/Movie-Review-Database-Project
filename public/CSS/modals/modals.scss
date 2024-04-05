@@ -1,7 +1,8 @@
 $modal-inner-padding:1.4rem; 
 $modal-content-color:rgba(0, 0, 0, 0.85); 
 $modal-content-border-width:6px; 
-$modal-content-border-color:black; 
+$modal-content-color:black;
+$modal-content-border-radius: 5px; 
 
 @import "/node_modules/bootstrap/scss/bootstrap.scss"
 
