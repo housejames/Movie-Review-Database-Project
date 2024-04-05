@@ -65,7 +65,11 @@ body {
       text-align: center;
     }
   }
-
+  /* .editBtn{
+    background-color: aliceblue;
+    color: white;
+    border-radius: ;
+  } */
   .collapse{
     background-color: #171717;
     border: 3px solid #212121;
@@ -127,6 +131,34 @@ body {
     margin-right: 2px;
   }
   .addBtn:hover{
+    
+    background-color: #662185;
+    border-color: #a13fce;
+    bottom: 3px;
+    
+  }
+
+  .editBtn{
+    display: inline-block;
+    background-color: #2a2929;
+    position: relative;
+    text-align: center;
+    align-items: center;
+    /* left: 500px; */
+    /* top: 5px; */
+    margin-left: 8px;
+    width: fit-content;
+    height: fit-content;
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    color: white;
+    font-size: 50%;
+    border: 3px solid black;
+    margin-right: 2px
+  }
+
+  .editBtn:hover{
     
     background-color: #662185;
     border-color: #a13fce;

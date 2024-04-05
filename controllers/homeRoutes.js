@@ -22,10 +22,11 @@ router.get('/', async (req, res) => {
         apirequest = `${newReleaseDomain}${apiKey}`
         const omdbData = await fetch(apirequest)
         let fetchedData = await omdbData.json()
+        // console.log(fetchedData)
         for(let i = 0; i < fetchedData.results.length; i++){
-            if(fetchedData.results[i].vote_count < 150){
-                fetchedData.results.splice(i)
-
+            console.log(fetchedData.results[i].vote_count)
+            if(fetchedData.results[i].vote_count < 500){
+                fetchedData.results.splice(i, 1)
             }
         }
         // Renders the homepage with the data in reviews

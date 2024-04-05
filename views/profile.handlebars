@@ -8,7 +8,41 @@
 </head>
 <body>
   <div class="profile-container row">
-<div class="col-6">
+
+
+
+    <div class="col-6">
+      <h2 class="userBoxes" >Favorites<button data-bs-toggle="modal" data-bs-target="#favorite" class="addBtn" >+</button></h2>
+      <div class="favorites-box">
+        <!-- Display user's favorite movies here -->
+        {{#each favorite as |favorite|}}
+        <div class="favorite-movie">
+          <button id="{{id}}" class="remove removeFav">X</button>
+          <img src="{{poster}}" alt="Movie Poster" class="poster" >
+          <h3>{{name}}</h3>
+        </div>
+        {{/each}}
+        <!-- More favorite movie items as needed -->
+      </div>
+      </div>
+
+      <div class="col-6">
+      <h2 class="userBoxes" >Watchlist<button data-bs-toggle="modal" data-bs-target="#watchlist" class="addBtn" >+</button></h2>
+      <div class="watchlist-box">
+        {{#each watch_list as |watchlist|}}
+        <!-- Display user's watchlist here -->
+        <div class="watchlist-item">
+          <button id="{{id}}" class="remove removewl">X</button>
+          <img src="{{poster}}" alt="Movie Poster" class="poster" >
+          <h3>{{name}}</h3>
+        </div>
+         {{/each}}
+        <!-- More watchlist items as needed -->
+      </div>
+    </div>
+  
+
+  <div class="col-6">
   <h2 class="userBoxes" >Reviews<button class="addBtn"><a href="/review">+</a></button></h2>
 <div id="accordion" class="">
 {{#each reviews as |review|}}
@@ -33,38 +67,22 @@
     </div>
   </div>
   {{/each}}
-  
 </div>
 </div>
-    <div class="col-6">
-      <h2 class="userBoxes" >Favorites<button data-bs-toggle="modal" data-bs-target="#favorite" class="addBtn" >+</button></h2>
-      <div class="favorites-box">
-        <!-- Display user's favorite movies here -->
-        {{#each favorite as |favorite|}}
-        <div class="favorite-movie">
-          <button id="{{id}}" class="remove removeFav">X</button>
-          <img src="{{poster}}" alt="Movie Poster" class="poster" >
-          <h3>{{name}}</h3>
-        </div>
-        {{/each}}
-        <!-- More favorite movie items as needed -->
-      </div>
 
-      <h2 class="userBoxes" >Watchlist<button data-bs-toggle="modal" data-bs-target="#watchlist" class="addBtn" >+</button></h2>
-      <div class="watchlist-box">
-        {{#each watch_list as |watchlist|}}
-        <!-- Display user's watchlist here -->
-        <div class="watchlist-item">
-          <button id="{{id}}" class="remove removewl">X</button>
-          <img src="{{poster}}" alt="Movie Poster" class="poster" >
-          <h3>{{name}}</h3>
-        </div>
-         {{/each}}
+
+  <div class="col-6">
+      <h2 class="userBoxes" >User Info<button data-bs-toggle="modal" data-bs-target="#watchlist" class="editBtn">✏️</button></h2>
+      <div class="watchlist-box row">
+        <p class="col-12">{{username}}</p>
+        <p class="col-12">{{email}}</p>
+        <p class="col-12">{{password}}</p>
         <!-- More watchlist items as needed -->
       </div>
     </div>
 
-  </div>
+</div>
+
   <div class="header-icons">
         <a href="/" class="home-button"><i class="fas fa-home"></i></a>
     </div>
