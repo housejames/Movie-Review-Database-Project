@@ -38,3 +38,7 @@ button:hover{
     transition: all 0.1s ease 0s;
 }
 
+#signupName, #signupEmail, #signupPassword {
+    border-radius: 6px;
+}
+

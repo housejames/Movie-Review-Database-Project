@@ -1,6 +1,6 @@
 <section class="reviewcard">
     <div>
-        <div class="row  justify-content-around margin">
+        <div class="row margin">
             <div class=" reviewPoster col-1">
                 <img src="{{movie.poster}}" alt="" width="165" height="250">
             </div>
@@ -13,7 +13,7 @@
                     <h6 id="reviewuser">A Reel Radar Review by: {{user.username}}</h6>
                 </div>
                 <div class="nameRating2 col-2">
-                    <p class="reviewMovie">User Rating: {{rating}}/5</p>
+                    <p id="{{rating}}" class="reviewMovie ratings"></p>
                 </div>
                                   <p id="reviewcontent">
                 {{content}}
