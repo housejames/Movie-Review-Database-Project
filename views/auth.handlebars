@@ -1,11 +1,8 @@
 <link rel="stylesheet" type="text/css" href="/CSS/signup.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 
 <h2>Want to become a new member of Reel Radar? Sign up below!</h2>
-
-
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="/controllers/api/mailer.js"></script>
 
 <script type="text/javascript">
    (function(){
@@ -16,13 +13,14 @@
    })();
 </script>
 
-<form action="" id="signup">
+<form id="signup">
     <label for="signupEmail">New Username</label><br>
     <input type="text" id="signupName" placeholder="name"><br>
     <label for="signupEmail">Email</label><br>
     <input type="text" id="signupEmail" placeholder="email"><br>
     <label for="signupPassword">Password</label><br>
     <input type="password" id="signupPassword"><br>
-    <button class="btn" onclick="sendMail()" >Submit</button>
+    <button class="btn sendMail">Submit</button>
 </form>
-<script src="/js/auth.js"></script>
+<script src="/JS/auth.js"></script>
+<script src="/JS/mailer.js"></script>
