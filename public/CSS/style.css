@@ -578,7 +578,10 @@ img{
   .reel{
     justify-content: center;
     align-items: center;
-    
+    width: fit-content;
+  }
+  .margin{
+    margin-top: 5px;
   }
   .nameRating1{
     border: 1px solid black;
@@ -587,6 +590,10 @@ img{
   #reviewtitle{
     border: 1px solid black;
     text-align: center;
+    font-size: 75%;
+    h1{
+      font-size: 125%;
+    }
   }
   .nameRating2{
     border: 1px solid black;
@@ -595,7 +602,14 @@ img{
   #reviewcontent{
     border-top: 5px solid rgb(137, 17, 147);
     border-left: 1px solid rgb(0, 0, 0);
-    margin-right: 0px;
+    /* padding-top: 25px; */
+    font-size: 70%;
+    padding: 0%;
+    padding-top: 15px;
+    margin: 0%;
+  }
+  .reviewMovie{
+    margin-top: 0px;
   }
   #reviewtitle{
     width: fit-content;
