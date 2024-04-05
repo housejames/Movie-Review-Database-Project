@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Reviews</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000; 
+            color: #ffffff; 
+            margin: 0;
+            padding: 0px;
+        }
+        .review-container {
+            margin-bottom: 32px;
+        }
+        .review-container h1, .movie-name {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            font-weight: 800;
+            text-decoration: underline;
+            color: #ec8be2; 
+            margin-bottom: 16px;
+            box-shadow: 0 10px 15px -3px rgba(169, 46, 214, 0.5), 0 4px 6px -2px rgba(214, 158, 46, 0.25);
+        }
+        .review {
+            background-color: #2d3748; 
+            padding: 16px;
+            margin-bottom: 16px;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            transition: transform 200ms;
+        }
+        .review:hover {
+            transform: scale(1.05);
+        }
+        .review h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ec8be2;
+            margin-bottom: 8px;
+        }
+        .review p {
+            color: #cbd5e0; 
+        }
+   
+
+    </style>
+</head>
+<body>
+
+<div class="review-container">
+    <!-- Update movie name to use the new class for matching styling -->
+    <p class="movie-name">{{name}}</p>
+    {{#each reviews as |review|}}
+        <div class="review">
+            <h2>{{review.title}}</h2>
+            <p>{{review.content}}</p>
+        </div>
+    {{/each}}
+</div>
+
+</body>
+</html>

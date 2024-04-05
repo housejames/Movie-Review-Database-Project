@@ -1,7 +1,7 @@
 // Imports express into a router variable
 const router = require('express').Router();
 // Imports the joined models
-const {User, Review, Movie, UserMovie} = require('../models/index');
+const {User, Review, Movie, UserFavorite, UserWatchList} = require('../models/index');
 
 require('dotenv').config();
 const apiKey = `${process.env.API_KEY}`
@@ -22,10 +22,11 @@ router.get('/', async (req, res) => {
         apirequest = `${newReleaseDomain}${apiKey}`
         const omdbData = await fetch(apirequest)
         let fetchedData = await omdbData.json()
+        // console.log(fetchedData)
         for(let i = 0; i < fetchedData.results.length; i++){
-            if(fetchedData.results[i].vote_count < 150){
-                fetchedData.results.splice(i)
-
+            console.log(fetchedData.results[i].vote_count)
+            if(fetchedData.results[i].vote_count < 500){
+                fetchedData.results.splice(i, 1)
             }
         }
         // Renders the homepage with the data in reviews
@@ -73,33 +74,46 @@ router.get("/profile",async (req,res)=>{
       return res.redirect("/auth")
   }
   const userData = await User.findByPk(req.session.user_id,{
-      include:[Review]
+      include:[
+        {model: Review, attributes:[ 'id', 'title', 'content', 'rating']},
+        {model: Movie, through: UserFavorite, attributes:[ 'id', 'name', 'release_date', 'poster'], as: 'favorite'},
+        {model: Movie, attributes:['id', 'name', 'release_date', 'poster'], through: UserWatchList, as: 'watch_list'}
+    ],
   })
   const hbsData = userData.toJSON();
   hbsData.loggedIn = true
-  // res.json(hbsData);
-  res.render("profile",hbsData)
+  res.render("profile", hbsData)
 })
 
 router.get('/:id', async (req, res) => {
     try {
-        console.log(req.params.id)
         let str = req.params.id;
         let result = str.slice(5);
-        console.log(result)
         
         if(req.params.id === `movie${result}`){
-            console.log('did it_________________________________________________')
             apirequest = `${searchQueryDomain}?query=${result}&include_adult=false&language=en-US&page=1&api_key=${apiKey}`
             const tmdbData = await fetch(apirequest)
             let fetchedData = await tmdbData.json()
-            let movieUserWants = fetchedData.results[0]
-            const movieData = await Movie.findAll({include: [{model: Review}], where: {id: movieUserWants.id}})
+            let movieUserWants = fetchedData.results[0].id
+            const movieData = await Movie.findAll({include: [{model: Review}], where: {id: movieUserWants}})
             const parsedMovieData = movieData.map((review) => review.get({ plain: true }));
             res.render('searchedMovie', {parsedMovieData})
-        }else{
-            const userData = await User.findAll({include: [{model: Review}], where: {username: req.params.id}})
+        }else {
+            console.log(req.params.id)
+            const userData = await User.findAll({
+                where:{ username: req.params.id },
+                include:[
+                    {model: Review, attributes:[ 'id', 'title', 'content', 'rating']},
+                    {model: Movie, through: UserFavorite, attributes:[ 'id', 'name', 'release_date', 'poster'], as: 'favorite'},
+                    {model: Movie, attributes:['id', 'name', 'release_date', 'poster'], through: UserWatchList, as: 'watch_list'}
+                ],
+            })
+            // userData.toJSON()
             console.log(userData)
+            const parsedUserData = userData.map((review) => review.get({ plain: true }));
+            console.log('==============================================')
+            console.log(parsedUserData)
+            res.render('searchedProfile', {parsedUserData})
         }
 
     }catch (err) {
@@ -108,27 +122,5 @@ router.get('/:id', async (req, res) => {
     }
   });
 
-//   router.get('/:user', async (req, res) => {
-//     try {
-//         if()
-//             let str = "GeeksforGeeks";
-//             let result = str.slice(5);
- 
 
-        
-//       apirequest = `${searchQueryDomain}?query=${req.params.user}&include_adult=false&language=en-US&page=1&api_key=${apiKey}`
-//       const tmdbData = await fetch(apirequest)
-//       let fetchedData = await tmdbData.json()
-//       let movieUserWants = fetchedData.results[0]
-//       const movieData = await Movie.findAll({include: [{model: Review}], where: {id: movieUserWants.id}})
-//       const parsedMovieData = movieData.map((review) => review.get({ plain: true }));
-//       console.log(parsedMovieData[0].reviews)
-//       res.render('searchedMovie', {parsedMovieData})
-//     }catch (err) {
-//       console.log(err);
-//       res.status(400).json(err);
-//     }
-//   });
-
-// Exports the route
 module.exports = router;
