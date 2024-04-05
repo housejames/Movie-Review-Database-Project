@@ -95,7 +95,7 @@ router.post('/wl', async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     const movieData = await Movie.findAll({
-      include: [{model: Review,}]
+      include: [{model: Review}]
     })
     res.status(200).json(movieData)
   }catch (err) {
