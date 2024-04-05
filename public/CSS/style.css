@@ -164,6 +164,7 @@ p{
 
 .github-links{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
@@ -198,16 +199,16 @@ border-bottom: 7px dashed grey;
 
 }
 .margin{
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex;
+  flex-wrap: nowrap; */
   margin: 15px;
+  justify-content: space-around;
 }
 
 .reviewPoster{
   display: flex;
   justify-content: center;
   align-items: center;
-
   margin: 10px;
 }
 img{
@@ -560,9 +561,47 @@ img{
 }
 
 @media screen and (max-width: 768px) {
-  *:not(#newRelease) {
+  *:not(#newRelease, .newrleaserow, .github-links  ) {
     flex-direction: column;
     justify-content: center;
     align-content: center;
+  }
+  .writebtn{
+    align-items: center;
+  }
+  .reviewPoster{
+    img{
+      width: 0px;
+      height: 0px;
+    }
+  }
+  .reel{
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .nameRating1{
+    border: 1px solid black;
+    text-align: center;
+  }
+  #reviewtitle{
+    border: 1px solid black;
+    text-align: center;
+  }
+  .nameRating2{
+    border: 1px solid black;
+    text-align: center;
+  }
+  #reviewcontent{
+    border-top: 5px solid rgb(137, 17, 147);
+    border-left: 1px solid rgb(0, 0, 0);
+    margin-right: 0px;
+  }
+  #reviewtitle{
+    width: fit-content;
+  }
+  .search{
+    text-align: center;
+    align-items: center;
   }
 }
