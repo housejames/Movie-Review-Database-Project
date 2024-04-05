@@ -62,7 +62,7 @@ p{
   color: white;
   text-align: center;
   font-size: 125%;
-  background-color: #4D48A8;
+  background-color: #700C74;
 }
 
 #logout{
@@ -74,7 +74,7 @@ p{
   color: white;
   text-align: center;
   font-size: 125%;
-  background-color: #4D48A8;
+  background-color: #800080;
 }
 
 #option2{
@@ -202,9 +202,9 @@ border-bottom: 7px dashed grey;
   align-items: center;
 
   margin: 10px;
-  img{
-    border-radius: 15px;
-  }
+}
+img{
+  border-radius: 15px;
 }
 .nameRating2{
   display: flex;
@@ -222,11 +222,15 @@ border-bottom: 7px dashed grey;
   border-radius: 15px;
   margin-top: 15px;
   margin-bottom: 15px;
-  background-color: #171717;
+  background-color: #000000;
   border: 3px solid #792386;
   color: white;
   padding: 15px;
   font-size: 75%;
+  text-align: center;
+}
+.ratings{
+  font-size: 100%;
 }
 
 #reviewcontent{
@@ -257,7 +261,7 @@ border-bottom: 7px dashed grey;
     color: rgb(234, 234, 234);
     font-weight: 500;
     transition: 0.6s;
-    box-shadow: 0px 0px 60px #1f4c65;
+    box-shadow: 0px 0px 60px #521f65;
     -webkit-box-reflect: below 10px linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.4));
   }
   
