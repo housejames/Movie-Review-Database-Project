@@ -55,8 +55,9 @@
     <p class="movie-name">{{name}}</p>
     {{#each reviews as |review|}}
         <div class="review">
-            <h2>{{review.title}}</h2>
-            <p>{{review.content}}</p>
+            <h2>{{title}}</h2>
+            <p>{{content}}</p>
+            <p>rating: {{rating}}</p>
         </div>
     {{/each}}
 </div>
