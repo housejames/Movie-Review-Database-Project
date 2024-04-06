@@ -1,12 +1,11 @@
 const router = require('express').Router();
-const session = require('express-session');
 const { User, Review, Movie, UserFavorite, UserWatchList} = require('../../models/index');
 
 require('dotenv').config();
 const apiKey = `${process.env.API_KEY}`
 const searchQueryDomain = `${process.env.API_SEARCH_DOMAIN}`
 
-// Posts a movie with user data from the rview page
+// POST request to add a movie from the 'post a review form'
 router.post('/', async (req, res) => {
   try {
     // Pulls data from a post fetch request made in ../../public/JS/postLogic
@@ -23,6 +22,7 @@ router.post('/', async (req, res) => {
     }
 });
 
+// POST request to add a movie and a joining UserFavorite, adding it to the users favorites
 router.post('/fav', async (req, res) => {
   try {
     // Pulls data from a post fetch request made in ../../public/JS/postLogic
@@ -61,6 +61,7 @@ router.post('/fav', async (req, res) => {
     }
 });
 
+// POST request to add a movie and a joining UserWatchList adding it to the users watchlist
 router.post('/wl', async (req, res) => {
   try {
     // Pulls data from a post fetch request made in ../../public/JS/postLogic

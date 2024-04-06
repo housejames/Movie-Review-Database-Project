@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt")
 const { User, Review, Movie, UserMovie, UserFavorite, UserWatchList } = require('../../models');
 
 
-// If a POST request is made to /api/users, a new user is created. The user id and logged in state is saved to the session within the request object.
+// POST request for adding a user
 router.post('/', async (req, res) => {
   try {
     console.log(req.body)
@@ -21,28 +21,35 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Route to get all user info in json format
+// GET request for getting all users
 router.get('/', async (req, res) => {
-    try {
-        const userData = await User.findAll({
-        include: [{model: Review}, {
-          model: Movie, through: UserFavorite, 
-          attributes:['name', 'release_date', 'poster'], as: 'favorite'
+  try {
+    const userData = await User.findAll({
+      include: [
+        {
+          model: Review
         }, {
-          model: Movie, 
-          attributes:['name', 'release_date', 'poster'], 
-          through: UserWatchList, as: 'watch_list'}
-        ],
-        attributes: { exclude: ['password']}
-        })
-        res.status(200).json(userData)
-    } catch (err) {
-        console.log(err);
-        res.status(400).json(err);
-      }
+          model: Movie,
+          through: UserFavorite,
+          attributes: ['name', 'release_date', 'poster'],
+          as: 'favorite'
+        }, {
+          model: Movie,
+          attributes: ['name', 'release_date', 'poster'],
+          through: UserWatchList,
+          as: 'watch_list'
+        }
+      ],
+      attributes: { exclude: ['password'] }
+    })
+    res.status(200).json(userData)
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+  }
 })
 
-// If a POST request is made to /api/users/login, the function checks to see if the user information matches the information in the database and logs the user in. If correct, the user ID and logged-in state are saved to the session within the request object.
+// POST rquest that takes login values and checks the data base if the email/password are correct
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
@@ -68,7 +75,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// If a POST request is made to /api/users/logout, the function checks the logged_in state in the request.session object and destroys that session if logged_in is true.
+// Post request to logout deleting any session data
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
@@ -79,4 +86,5 @@ router.post('/logout', (req, res) => {
   }
 });
 
+// Exports the routes for use
 module.exports = router;
