@@ -1,17 +1,18 @@
 const router = require('express').Router();
-const { User, Review, Movie} = require('../../models/index');
+const { User, Review, Movie } = require('../../models/index');
 
 // GET request to get all reviews
 router.get('/', async (req, res) => {
   try {
+    // Gets all reviews from our db
     const reviewData = await Review.findAll({
       // Adds the username from the User model through the linked id
       include: [
-        { 
-          model: User, 
-          attributes: ['username'] 
-        }, { 
-          model: Movie 
+        {
+          model: User,
+          attributes: ['username']
+        }, {
+          model: Movie
         }
       ]
     })
@@ -28,12 +29,14 @@ router.get('/', async (req, res) => {
 // DELETE request to delete a specifc review
 router.delete('/:id', async (req, res) => {
   try {
+    // Finds a review where the id matches the search paramater
     const data = await Review.destroy({
       where: {
         id: req.params.id,
       },
     });
     res.json()
+    // Catch for errors
   } catch (err) {
     res.status(500).json(err);
   }

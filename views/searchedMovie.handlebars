@@ -1,78 +1,83 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #121212; 
-            color: #ffffff; 
-            margin: 0;
-            padding: 20px;
-        }
-        .movie-container {
-            display: flex;
-            align-items: flex-start;
-            margin-top: 0px;
-        }
-        .movie-poster {
-            position: sticky;
-            top: 50px;
-            flex: 1;
-            padding-right: 20px;
-        }
-        .movie-poster img {
-            position: sticky;
-            top: 20px;
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-        .movie-details {
-            flex: 3;
-        }
-        .movie-details > div {
-            background-color: #1a1a1a; 
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
-            color: #ccc; 
-        }
+{{!-- STYLING --}}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #121212;
+        color: #ffffff;
+        margin: 0;
+        padding: 20px;
+    }
 
-        @media (max-width: 768px) {
     .movie-container {
-        flex-direction: column;
+        display: flex;
+        align-items: flex-start;
+        margin-top: 0px;
     }
-    .movie-poster, .movie-details {
-        max-width: 100%;
-        flex-basis: auto;
-    }
-}
-.home-button {
-top: 56px
-    
-}
-    </style>
-</head>
-<body>
 
-<div class="movie-container">
-    <div class="movie-poster">
-        <img src="{{parsedMovieData.[0].poster}}" alt="">
-    </div>
-    <div class="movie-details">
-        {{#each parsedMovieData as |movie|}}
+    .movie-poster {
+        position: sticky;
+        top: 50px;
+        flex: 1;
+        padding-right: 20px;
+    }
+
+    .movie-poster img {
+        position: sticky;
+        top: 20px;
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .movie-details {
+        flex: 3;
+    }
+
+    .movie-details>div {
+        background-color: #1a1a1a;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        color: #ccc;
+    }
+
+    @media (max-width: 768px) {
+        .movie-container {
+            flex-direction: column;
+        }
+
+        .movie-poster,
+        .movie-details {
+            max-width: 100%;
+            flex-basis: auto;
+        }
+    }
+
+    .home-button {
+        top: 56px
+    }
+</style>
+
+<body>
+    {{!-- MOVIE POSTER --}}
+    <div class="movie-container">
+        <div class="movie-poster">
+            <img src="{{parsedMovieData.[0].poster}}" alt="">
+        </div>
+        <div class="movie-details">
+            {{!-- LOADS PARTIAL --}}
+            {{#each parsedMovieData as |movie|}}
             <div>
                 {{> searched-details}}
             </div>
-        {{/each}}
+            {{/each}}
+        </div>
     </div>
-</div>
 
- <a href="/" class="home-button"><i class="fas fa-home"></i></a>
+    {{!-- PROFILE/HOME BUTTONS --}}
+    <a href="/" class="home-button"><i class="fas fa-home"></i></a>
 
-<script src="/JS/searchedMovieLogic.js"></script>
-
+    {{!-- JS SCRIPTS --}}
+    <script src="/JS/searchedMovieLogic.js"></script>
 </body>
-</html>

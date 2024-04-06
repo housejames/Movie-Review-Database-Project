@@ -1,26 +1,28 @@
 <section class="reviewcard">
     <div>
         <div class="row margin">
+            {{!-- POSTER --}}
             <div class=" reviewPoster col-1">
                 <img src="{{movie.poster}}" alt="" width="165" height="250">
             </div>
+            {{!-- MOVIE REEL DESIGN --}}
             <div class="row reel col-9">
+                {{!-- MOVIE NAME --}}
                 <div class="nameRating1 col-2">
                     <p class="reviewMovie">{{movie.name}}</p>
                 </div>
+                {{!-- MOVIE TITLE AND USER --}}
                 <div class="col-8" id="reviewtitle">
                     <h1>{{title}}</h1>
                     <h6 id="reviewuser">A Reel Radar Review by: {{user.username}}</h6>
                 </div>
+                {{!-- USER RATING --}}
                 <div class="nameRating2 col-2">
                     <p id="{{rating}}" class="reviewMovie ratings"></p>
                 </div>
-                                  <p id="reviewcontent">
-                {{content}}
-            </p>
+                {{!-- REVIEW CONTENT --}}
+                <p id="reviewcontent">{{content}} </p>
             </div>
-  
-
         </div>
     </div>
 </section>

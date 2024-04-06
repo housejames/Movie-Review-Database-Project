@@ -1,82 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Reviews</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #000000; 
-            color: #ffffff; 
-            margin: 0;
-            padding: 0px;
-        }
-        .review-container {
-            margin-bottom: 32px;
-        }
-        .review-container h1, .movie-name {
-            font-size: 2.25rem;
-            line-height: 2.5rem;
-            font-weight: 800;
-            text-decoration: underline;
-            color: #ec8be2; 
-            margin-bottom: 16px;
-            box-shadow: 0 10px 15px -3px rgba(169, 46, 214, 0.5), 0 4px 6px -2px rgba(214, 158, 46, 0.25);
-        }
-        .review {
-            background-color: #2d3748; 
-            padding: 16px;
-            margin-bottom: 16px;
-            border-radius: 0.5rem;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-            transition: transform 200ms;
-        }
-        .review:hover {
-            transform: scale(1.05);
-        }
-        .review h2 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #ec8be2;
-            margin-bottom: 8px;
-        }
-        .review p {
-            display: inline-block;
-            white-space:normal;
-            word-wrap: break-all;
-            color: #cbd5e0; 
-        }
-   
+{{!-- STYLING --}}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #000000;
+        color: #ffffff;
+        margin: 0;
+        padding: 0px;
+    }
 
-    </style>
-</head>
-<body>
+    .review-container {
+        margin-bottom: 32px;
+    }
 
+    .review-container h1,
+    .movie-name {
+        font-size: 2.25rem;
+        line-height: 2.5rem;
+        font-weight: 800;
+        text-decoration: underline;
+        color: #ec8be2;
+        margin-bottom: 16px;
+        box-shadow: 0 10px 15px -3px rgba(169, 46, 214, 0.5), 0 4px 6px -2px rgba(214, 158, 46, 0.25);
+    }
+
+    .review {
+        background-color: #2d3748;
+        padding: 16px;
+        margin-bottom: 16px;
+        border-radius: 0.5rem;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        transition: transform 200ms;
+    }
+
+    .review:hover {
+        transform: scale(1.05);
+    }
+
+    .review h2 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #ec8be2;
+        margin-bottom: 8px;
+    }
+
+    .review p {
+        display: inline-block;
+        white-space: normal;
+        word-wrap: break-all;
+        color: #cbd5e0;
+    }
+</style>
+
+{{!-- MOVIE NAME AND RATING --}}
 <div class="review-container">
-<<<<<<< HEAD
-    <p class="movie-name">{{name}}</p>
-=======
-    <!-- Update movie name to use the new class for matching styling -->
     <div class="row">
-    <p class="movie-name col-6">{{name}}</p>
-    <p class=" movie-name average-rating col-6"></p>
+        <p class="movie-name col-6">{{name}}</p>
+        <p class=" movie-name average-rating col-6"></p>
     </div>
->>>>>>> dev
+    {{!-- EACH REVIEW --}}
     {{#each reviews as |review|}}
-        <div class="review">
-            <h2>{{title}}</h2>
-            <p>{{content}}</p>
-            <div class="rating" id="{{rating}}">
-                {{!-- <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
-                </svg> --}}
-            </div>
-            {{!-- <p class="rating" id="{{rating}}">Rating:{{rating}}/5</p> --}}
-            
+    <div class="review">
+        <h2>{{title}}</h2>
+        <p>{{content}}</p>
+        <div class="rating" id="{{rating}}">
         </div>
+    </div>
     {{/each}}
 </div>
 
-</body>
-</html>

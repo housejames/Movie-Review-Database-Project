@@ -1,154 +1,148 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Profile</title>
-  <link rel="stylesheet" href="/CSS/userprofile.css">
-</head>
-<body>
-  <div class="profile-container row">
-<div class="col-6">
-  <h2 class="userBoxes" >Reviews</h2>
-<div id="accordion" class="">
-{{#each parsedUserData.[0].reviews as |review|}}
-  <div class="card expandable">
-    <div class="card-header row">
-      <h5 class="mb-0 col-10">
-        <button class="btn btn-link titlebtn" data-bs-toggle="collapse" data-bs-target="#collapse{{id}}" aria-bs-expanded="false" aria-bs-controls="collapse{{id}}">
-          {{title}}
-        </button>
-      </h5>
-    </div>
+{{!-- STYLE SHEET --}}
+<link rel="stylesheet" href="/CSS/userprofile.css">
 
-    <div id="collapse{{id}}" class="collapse" aria-bs-labelledby="heading{{id}}" data-parent="#accordion">
-      <div class="card-body">
-        <h6 class="revealedLabel">Content:</h6>
-        <p name="" id="123" cols="75" rows="15">{{content}}</p>
-          <br><br><br>
-        <h6>Rating: </h6>
-        <p name="" id="" cols="1" rows="1">{{rating}}/5</p>
+{{!-- PROFILE CONTAINERS --}}
+<div class="profile-container row">
+
+  {{!-- REVIEWS CONTAINER --}}
+  <div class="col-6">
+    <h2 class="userBoxes">Reviews</h2>
+    <div id="accordion">
+      {{!-- RENDERS EACH EXPANDABLE REVIEW --}}
+      {{#each parsedUserData.[0].reviews as |review|}}
+      <div class="card expandable">
+        <div class="card-header row">
+          <h5 class="mb-0 col-10">
+            <button class="btn btn-link titlebtn" data-bs-toggle="collapse" data-bs-target="#collapse{{id}}"
+              aria-bs-expanded="false" aria-bs-controls="collapse{{id}}">
+              {{title}}
+            </button>
+          </h5>
+        </div>
+        <div id="collapse{{id}}" class="collapse" aria-bs-labelledby="heading{{id}}" data-parent="#accordion">
+          <div class="card-body">
+            <h6 class="revealedLabel">Content:</h6>
+            <p name="" id="123" cols="75" rows="15">{{content}}</p>
+            <br><br><br>
+            <h6>Rating: </h6>
+            <p name="" id="" cols="1" rows="1">{{rating}}/5</p>
+          </div>
+        </div>
       </div>
+      {{/each}}
     </div>
   </div>
-  {{/each}}
-  
-</div>
-</div>
-    <div class="col-6">
-      <h2 class="userBoxes" >Favorites</h2>
-      <div class="favorites-box">
-        <!-- Display user's favorite movies here -->
-        {{#each parsedUserData.[0].favorite as |favorite|}}
-        <div class="favorite-movie">
-          <img src="{{poster}}" alt="Movie Poster" class="poster" >
-          <h3>{{name}}</h3>
-        </div>
-        {{/each}}
-        <!-- More favorite movie items as needed -->
-      </div>
 
-      <h2 class="userBoxes" >Watchlist</h2>
-      <div class="watchlist-box">
-        {{#each parsedUserData.[0].watch_list as |watchlist|}}
-        <!-- Display user's watchlist here -->
-        <div class="watchlist-item">
-
-          <img src="{{poster}}" alt="Movie Poster" class="poster" >
-          <h3>{{name}}</h3>
-        </div>
-         {{/each}}
-        <!-- More watchlist items as needed -->
+  {{!-- FAVORITES CONTAINER --}}
+  <div class="col-6">
+    <h2 class="userBoxes">Favorites</h2>
+    <div class="favorites-box">
+      {{!-- RENDERS EACH FAVORITE --}}
+      {{#each parsedUserData.[0].favorite as |favorite|}}
+      <div class="favorite-movie">
+        <img src="{{poster}}" alt="Movie Poster" class="poster">
+        <h3>{{name}}</h3>
       </div>
+      {{/each}}
     </div>
 
+    {{!-- WATCHLIST CONTAINER --}}
+    <h2 class="userBoxes">Watchlist</h2>
+    <div class="watchlist-box">
+      {{#each parsedUserData.[0].watch_list as |watchlist|}}
+      <div class="watchlist-item">
+        <img src="{{poster}}" alt="Movie Poster" class="poster">
+        <h3>{{name}}</h3>
+      </div>
+      {{/each}}
+      <!-- More watchlist items as needed -->
+    </div>
   </div>
-  <div class="header-icons">
-        <a href="/" class="home-button"><i class="fas fa-home"></i></a>
-    </div>
+</div>
+
+{{!-- HOME BUTTON --}}
+<div class="header-icons">
+  <a href="/" class="home-button"><i class="fas fa-home"></i></a>
+</div>
 
 
 {{!-- FAVORITE MODAL --}}
- <div class="modal fade" id="favorite" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            {{!-- <div class="search"> --}}
-
-                              <div class="search-box">
-                                <div class="search-field">
-                                  <input placeholder="Search For Movies" id="favoriteMovieSearch" class="input" type="text">
-                                  <div class="search-box-icon">
-                                    <button class="btn-icon-content" id="Favoritesearch">
-                                    <i class="search-icon">
-                                      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 512">
-                                          <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" fill="#fff"></path>
-                                      </svg>
-                                    </i>
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
-            {{!-- </div> --}}
-                            <button type="button" class="btn-close nukeAfterClose" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary closeReload" data-bs-dismiss="modal">Close</button>
-                            
-                        </div>
-                    </div>
-                </div>
+<div class="modal fade" id="favorite" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="search-box">
+          <div class="search-field">
+            <input placeholder="Search For Movies" id="favoriteMovieSearch" class="input" type="text">
+            <div class="search-box-icon">
+              <button class="btn-icon-content" id="Favoritesearch">
+                <i class="search-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 512">
+                    <path
+                      d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                      fill="#fff"></path>
+                  </svg>
+                </i>
+              </button>
             </div>
-  
+          </div>
+        </div>
+        <button type="button" class="btn-close nukeAfterClose" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary closeReload" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 {{!-- WATCHLIST MODAL --}}
- <div class="modal fade" id="watchlist" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            {{!-- <div class="search"> --}}
-
-                              <div class="search-box">
-                                <div class="search-field">
-                                  <input placeholder="Search For Movies" id="watchlistMovieSearch" class="input" type="text">
-                                  <div class="search-box-icon">
-                                    <button class="btn-icon-content" id="watchlistSearch">
-                                    <i class="search-icon">
-                                      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 512">
-                                          <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" fill="#fff"></path>
-                                      </svg>
-                                    </i>
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
-            {{!-- </div> --}}
-                            <button type="button"  class="btn-close nukeAfterClose" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body2">
-                            <h6>Click a movie poster to add it to your watchlist</h6>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary closeReload2" data-bs-dismiss="modal">Close</button>
-                            
-                        </div>
-                    </div>
-                </div>
+<div class="modal fade" id="watchlist" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="search-box">
+          <div class="search-field">
+            <input placeholder="Search For Movies" id="watchlistMovieSearch" class="input" type="text">
+            <div class="search-box-icon">
+              <button class="btn-icon-content" id="watchlistSearch">
+                <i class="search-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 512">
+                    <path
+                      d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                      fill="#fff"></path>
+                  </svg>
+                </i>
+              </button>
             </div>
-  {{!-- TOAST --}}
-            <div class="toast-container position-fixed bottom-0 end-0 p-3">
+          </div>
+        </div>
+        <button type="button" class="btn-close nukeAfterClose" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body2">
+        <h6>Click a movie poster to add it to your watchlist</h6>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary closeReload2" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- TOAST --}}
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
   <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       <img src="..." class="rounded me-2" alt="...">
       <strong class="me-auto"></strong>
       <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
-
   </div>
 </div>
 
-    <script src="/JS/profile.js"></script>
-
-</body>
-</html>
+{{!-- JS SCRIPTS --}}
+<script src="/JS/profile.js"></script>
