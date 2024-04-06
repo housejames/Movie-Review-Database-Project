@@ -16,5 +16,5 @@ router.use('/movies', movieRoute);
 router.use('/favorite', favoriteRoute);
 router.use('/watchlist', watchlistRoute);
 
-
+// Exports the routes for use
 module.exports = router;

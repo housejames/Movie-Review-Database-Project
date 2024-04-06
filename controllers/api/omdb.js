@@ -5,19 +5,21 @@ require('dotenv').config();
 const apiKey = `${process.env.API_KEY}`
 const searchQueryDomain = `${process.env.API_SEARCH_DOMAIN}`
 
-// Gets data from the tmbd api using the paramaters as the users search
+// GET request that does a fetch request to pull data from tmbd
 router.get('/:id', async (req, res) => {
   try {
+    // API fetch request
     apirequest = `${searchQueryDomain}?query=${req.params.id}&include_adult=false&language=en-US&page=1&api_key=${apiKey}`
     const omdbData = await fetch(apirequest)
     let fetchedData = await omdbData.json()
     // Sends the fetched data back
     res.send(fetchedData);
-  }catch (err) {
+    // Catch for errors
+  } catch (err) {
     console.log(err);
     res.status(400).json(err);
   }
 })
 
-// Exports the routes
+// Exports the route for use
 module.exports = router;

@@ -1,15 +1,12 @@
-
-    <div id="releaseCard">
-                    <div class="tooltip-container">
-                        <span class="tooltip">{{overview}} <br> <br>Released: {{release_date}}</span>
-                        <span class="tiptext">ⓘ</span>
-                    </div>
-        <div>
-            <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" height="150" width="100" alt="">
-            <h1 id="releaseTitle">{{title}}</h1>
-        </div>
-
+<div id="releaseCard">
+    {{!-- TOOLTIP CONTAINER --}}
+    <div class="tooltip-container">
+        <span class="tooltip">{{overview}} <br> <br>Released: {{release_date}}</span>
+        <span class="tiptext">ⓘ</span>
     </div>
-
-
-
+    {{!-- POSTER --}}
+    <div>
+        <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" height="150" width="100" alt="">
+        <h1 id="releaseTitle">{{title}}</h1>
+    </div>
+</div>

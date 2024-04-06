@@ -1,46 +1,56 @@
+// Add an event listener to the search for a user button that runs a function
 userSearch = document.querySelector('.usernameInputBtn')
 userSearch.addEventListener('click', async (event) => {
+    // Grabs the value in the search field
     let userSearchValue = document.querySelector('.usernameInput').value
-    console.log(userSearchValue)
+    // Performs a GET request to a specific id (id being the username of the person they are searching)
     const response = await fetch(`/${userSearchValue}`, {
         method: 'GET',
     });
+    // Routes the user to the searchedProfile page
     document.location.replace(`/${userSearchValue}`)
 })
 
-
-
-
-
+// Add an event listener to the search for a movie button that runs a function
 movieSearch = document.querySelector('.movieNameInputBtn')
 movieSearch.addEventListener('click', async (event) => {
-    let movieSearchValue =  document.querySelector('.movieNameInput').value
+    // Grabs the value in the search field
+    let movieSearchValue = document.querySelector('.movieNameInput').value
+    // Replaces spaces with a + for better search results
     let updatedmovieSearchValue = movieSearchValue.replace(/\s/g, '+')
-    let test = `movie${updatedmovieSearchValue}`
-    const response = await fetch(`/${test}`, {
+    // Adds the text 'movie' to the from of the value the user searched to differentiate it from a user-search
+    // This is used in the backend to ensure no crossover
+    let safteyNetValue = `movie${updatedmovieSearchValue}`
+    // Performs a GET request to a specific id (id being the name of the movie they are searching)
+    const response = await fetch(`/${safteyNetValue}`, {
         method: 'GET',
     });
-    document.location.replace(`/${test}`)
+    // Routes the user to the searchedMovie page
+    document.location.replace(`/${safteyNetValue}`)
 })
 
-
+// Searches the page for all the review ratings
 let rating = document.querySelectorAll('.ratings')
-for(let i = 0; i < rating.length; i++ ){
+// For loop that goes over each rating that is found (meaning the total amount of reviews on the page)
+for (let i = 0; i < rating.length; i++) {
+    // Pulls the id from the rating <p> (the id is assigned the actual users rating on the review in handlebars)
     reviewrating = rating[i].id
+    // Turns in into an integer
     reviewrating = parseInt(reviewrating)
-    if(reviewrating === 5){
+    // Based on the review score it renders a an amount of starts, with a unique color
+    if (reviewrating === 5) {
         rating[i].textContent = `☆ ☆ ☆ ☆ ☆`
         rating[i].style.color = "#7951AC"
-    }else if (reviewrating === 4){
+    } else if (reviewrating === 4) {
         rating[i].textContent = `☆ ☆ ☆ ☆`
         rating[i].style.color = "#22885E"
-    }else if (reviewrating === 3){
+    } else if (reviewrating === 3) {
         rating[i].textContent = `☆ ☆ ☆`
         rating[i].style.color = "#9F7E18"
-    }else if (reviewrating === 2){
+    } else if (reviewrating === 2) {
         rating[i].textContent = `☆ ☆`
         rating[i].style.color = "#99542D"
-    }else {
+    } else {
         rating[i].textContent = `☆`
         rating[i].style.color = "#A23C3C"
     }
