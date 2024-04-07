@@ -1,7 +1,7 @@
 {{!-- STYLE SHEETS --}}
 <link rel="stylesheet" type="text/css" href="/CSS/jass.css">
 <link rel="stylesheet" type="text/css" href="/CSS/style.css">
-
+<link rel="stylesheet" type="text/css" href="/CSS/header-buttons.css">
 
 <section class="row justify-content-md-center">
     {{!-- TOP BUTTONS --}}
@@ -64,9 +64,9 @@
 </section>
 
 {{!-- REVIEWS AND SEARCH BUTTONS --}}
-<section>
+<section id="center">
     {{!-- REVIEWS --}}
-    <div class="row justify-content-around reviewwrap">
+    <div class="row justify-content-center reviewwrap">
         <div class="latestreviews col-12">
             <div class="newInTheaters">
                 <h2>Latest Reviews:</h2>
@@ -79,7 +79,7 @@
 
         {{!-- SEARCH BUTTONS --}}
         <div class="searchFunc col-12">
-            <div class="row justify-content-center" id=" latest">
+            <div class="row justify-content-center" id="latest">
                 {{!-- MOVIE SEARCH --}}
                 <div class="col-5 ">
                     <h2>Search for a movie</h2>
@@ -100,6 +100,7 @@
                                 </div>
                             </div>
                         </div>
+                        <p></p>
                     </div>
                 </div>
                 {{!-- USER SEARCH --}}
@@ -123,6 +124,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="noUserFound">
+                        
+                    </div>
                 </div>
             </div>
         </div>
@@ -135,14 +139,6 @@
 </div>
 
 </main>
-
-{{!-- SOME STYLING? --}}
-<style>
-    .user-button {
-        top: 3.5rem;
-        right: 75px;
-    }
-</style>
 
 {{!-- FOOTER GITHUB LINKS --}}
 <footer style="padding: 1em;">

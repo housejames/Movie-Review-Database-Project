@@ -1,175 +1,219 @@
 {{!-- STYLE SHEET --}}
+<link rel="stylesheet" type="text/css" href="/CSS/starRadio.css">
 <link rel="stylesheet" href="/CSS/userprofile.css">
+<link rel="stylesheet" type="text/css" href="/CSS/header-buttons.css">
 
+{{!-- PROFILE CONTAINERS --}}
+<div class="profile-container row">
 
-  {{!-- PROFILE CONTAINERS --}}
-  <div class="profile-container row">
-
-    {{!-- FAVORITES CONTAINER --}}
-    <div class="col-6">
-      <h2 class="userBoxes">Favorites<button data-bs-toggle="modal" data-bs-target="#favorite" class="addBtn">+</button>
-      </h2>
-      <div class="favorites-box">
-        {{!-- RENDERS EACH FAVORITE --}}
-        {{#each favorite as |favorite|}}
-        <div class="favorite-movie">
-          <button id="{{id}}" class="remove removeFav">X</button>
-          <img src="{{poster}}" alt="Movie Poster" class="poster">
-          <h3>{{name}}</h3>
-        </div>
-        {{/each}}
+  {{!-- FAVORITES CONTAINER --}}
+  <div class=" col-6">
+    <h2 class="userBoxes">Favorites<button data-bs-toggle="modal" data-bs-target="#favorite" class="addBtn">+</button>
+    </h2>
+    <div class="favorites-box">
+      {{!-- RENDERS EACH FAVORITE --}}
+      {{#each favorite as |favorite|}}
+      <div class="favorite-movie">
+        <button id="{{id}}" class="remove removeFav">X</button>
+        <img src="{{poster}}" alt="Movie Poster" class="poster">
+        <h3>{{name}}</h3>
       </div>
+      {{/each}}
     </div>
+  </div>
 
-    {{!-- WATCHLIST CONTAINER --}}
-    <div class="col-6">
-      <h2 class="userBoxes">Watchlist<button data-bs-toggle="modal" data-bs-target="#watchlist"
-          class="addBtn">+</button></h2>
-      <div class="watchlist-box">
-        {{#each watch_list as |watchlist|}}
-        <div class="watchlist-item">
-          <button id="{{id}}" class="remove removewl">X</button>
-          <img src="{{poster}}" alt="Movie Poster" class="poster">
-          <h3>{{name}}</h3>
-        </div>
-        {{/each}}
+  {{!-- WATCHLIST CONTAINER --}}
+  <div class="col-6">
+    <h2 class="userBoxes">Watchlist<button data-bs-toggle="modal" data-bs-target="#watchlist" class="addBtn">+</button>
+    </h2>
+    <div class="watchlist-box">
+      {{#each watch_list as |watchlist|}}
+      <div class="watchlist-item">
+        <button id="{{id}}" class="remove removewl">X</button>
+        <img src="{{poster}}" alt="Movie Poster" class="poster">
+        <h3>{{name}}</h3>
       </div>
+      {{/each}}
     </div>
+  </div>
 
-    {{!-- REVIEWS CONTAINER --}}
-    <div class="col-6">
-      <h2 class="userBoxes">Reviews<button class="addBtn"><a href="/review">+</a></button></h2>
-      <div id="accordion" class="">
-        {{!-- RENDERS EACH EXPANDABLE REVIEW --}}
-        {{#each reviews as |review|}}
-        <div class="card expandable">
-          <div class="card-header row">
-            <h5 class="mb-0 col-10">
-              <button class="btn btn-link titlebtn" data-bs-toggle="collapse" data-bs-target="#collapse{{id}}"
-                aria-bs-expanded="false" aria-bs-controls="collapse{{id}}">
-                {{title}}
+  {{!-- REVIEWS CONTAINER --}}
+  <div class="col-6 reviewsContainer">
+    <h2 class="userBoxes">Reviews<button class="addBtn"><a href="/review">+</a></button></h2>
+    <div id="accordion" class="">
+      {{!-- RENDERS EACH EXPANDABLE REVIEW --}}
+      {{#each reviews as |review|}}
+      <div class="card expandable">
+        <div class="card-header row">
+          <h5 class="mb-0 col-10">
+            {{title}}
+          </h5>
+          <button class="btn btn-link editReviewBtn" id="edit-trigger-{{id}}" data-bs-toggle="collapse" data-bs-target="#collapse{{id}}"
+            aria-bs-expanded="false" aria-bs-controls="collapse{{id}}">✏️
+          </button>
+          <button class="delete col-2"><img id="{{id}}" class="trashcan" src="/images/1f5d1.png" width="35px"
+              height="35px" alt=""></button>
+        </div>
+        <div id="collapse{{id}}" class="collapse" aria-bs-labelledby="heading{{id}}" data-parent="#accordion">
+          <div class="card-body">
+            {{!-- <h6>A review of: {{movie_id}}</h6> --}}
+            <h6>Title</h6>
+            <textarea class="createdReview titleArea" id="title{{id}}">{{title}}</textarea>
+            <br><br><br>
+            <h6 class="revealedLabel">Content:</h6>
+            <textarea class="createdReview contentArea" id="content{{id}}">{{content}}</textarea>
+            <br><br><br>
+            <h6>Rating: <span id="interact{{id}}">{{rating}}</span></h6>
+            {{!-- STAR RADIO BUTTONS --}}
+            <div class="starRating">
+              <div class="rating">
+                <input type="radio" class="star5" id="star5-{{id}}" name="rate" value="5" />
+                <label title="Excellent!" for="star5-{{id}}">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                    <path
+                      d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z">
+                    </path>
+                  </svg>
+                </label>
+                <input value="4" name="rate" id="star4-{{id}}" class="star4" type="radio" />
+                <label title="Great!" for="star4-{{id}}">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                    <path
+                      d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z">
+                    </path>
+                  </svg>
+                </label>
+                <input value="3" name="rate" id="star3-{{id}}" class="star3" type="radio" />
+                <label title="Good" for="star3-{{id}}">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                    <path
+                      d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z">
+                    </path>
+                  </svg>
+                </label>
+                <input value="2" name="rate" id="star2-{{id}}" class="star2" type="radio" />
+                <label title="Okay" for="star2-{{id}}">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                    <path
+                      d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z">
+                    </path>
+                  </svg>
+                </label>
+                <input value="1" name="rate" id="star1-{{id}}" class="star1" type="radio" />
+                <label title="Bad" for="star1-{{id}}">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                    <path
+                      d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z">
+                    </path>
+                  </svg>
+                </label>
+              </div>
+            </div>
+            <br><br><br>
+            {{!-- SAVE BUTTON --}}
+            <div id="submitReview">
+              <button type='submit' id="edit{{id}}" class="button saveEditChange" value='Submit'><i
+                  class="fas fa-film"></i>Save Changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+
+  {{!-- USER INFO SECTION --}}
+  <div class="col-6">
+    <h2 class="userBoxes">User Info<button data-bs-toggle="modal" class="editBtn">✏️</button></h2>
+    <div class="watchlist-box userinfo row">
+      <p class="col-12">{{username}}</p>
+      <p class="col-12">{{email}}</p>
+      <p class="col-12">**********</p>
+    </div>
+  </div>
+</div>
+
+{{!-- HOME BUTTON --}}
+<div class="header-icons">
+  <a href="/" class="home-button"><i class="fas fa-home"></i></a>
+</div>
+
+{{!-- FAVORITE MODAL --}}
+<div class="modal fade" id="favorite" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="search-box">
+          <div class="search-field">
+            <input placeholder="Search For Movies" id="favoriteMovieSearch" class="input" type="text">
+            <div class="search-box-icon">
+              <button class="btn-icon-content" id="Favoritesearch">
+                <i class="search-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 512">
+                    <path
+                      d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                      fill="#fff"></path>
+                  </svg>
+                </i>
               </button>
-            </h5>
-            <button class="delete col-2"><img id="{{id}}" class="trashcan" src="/images/1f5d1.png" width="35px"
-                height="35px" alt=""></button>
-          </div>
-          <div id="collapse{{id}}" class="collapse" aria-bs-labelledby="heading{{id}}" data-parent="#accordion">
-            <div class="card-body">
-              <h6 class="revealedLabel">Content:</h6>
-              <textarea class="createdReview" name="" id="123" cols="75" rows="15">{{content}}</textarea>
-              <br><br><br>
-              <h6>Rating: </h6>
-              <textarea name="" id="" cols="1" rows="1">{{rating}}</textarea>
             </div>
           </div>
         </div>
-        {{/each}}
+        <button type="button" class="btn-close nukeAfterClose" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-    </div>
-
-    {{!-- USER INFO SECTION --}}
-    <div class="col-6">
-      <h2 class="userBoxes">User Info<button data-bs-toggle="modal" data-bs-target="#watchlist"
-          class="editBtn">✏️</button></h2>
-      <div class="watchlist-box row">
-        <p class="col-12">{{username}}</p>
-        <p class="col-12">{{email}}</p>
-        <p class="col-12">{{password}}</p>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary closeReload" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
+</div>
 
-  {{!-- HOME BUTTON --}}
-  <div class="header-icons">
-    <a href="/" class="home-button"><i class="fas fa-home"></i></a>
-  </div>
-
-  {{!-- STYLING --}}
-  <style>
-    .home-button {
-      top: 3.5rem;
-      right: 75px;
-    }
-  </style>
-
-
-  {{!-- FAVORITE MODAL --}}
-  <div class="modal fade" id="favorite" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-            <div class="search-box">
-              <div class="search-field">
-                <input placeholder="Search For Movies" id="favoriteMovieSearch" class="input" type="text">
-                <div class="search-box-icon">
-                  <button class="btn-icon-content" id="Favoritesearch">
-                    <i class="search-icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 512">
-                        <path
-                          d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
-                          fill="#fff"></path>
-                      </svg>
-                    </i>
-                  </button>
-                </div>
-              </div>
+{{!-- WATCHLIST MODAL --}}
+<div class="modal fade" id="watchlist" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="search-box">
+          <div class="search-field">
+            <input placeholder="Search For Movies" id="watchlistMovieSearch" class="input" type="text">
+            <div class="search-box-icon">
+              <button class="btn-icon-content" id="watchlistSearch">
+                <i class="search-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 512">
+                    <path
+                      d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                      fill="#fff"></path>
+                  </svg>
+                </i>
+              </button>
             </div>
-          <button type="button" class="btn-close nukeAfterClose" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
         </div>
-        <div class="modal-body">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary closeReload" data-bs-dismiss="modal">Close</button>
-        </div>
+        <button type="button" class="btn-close nukeAfterClose" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body2">
+        <h6>Click a movie poster to add it to your watchlist</h6>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary closeReload2" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
+</div>
 
-  {{!-- WATCHLIST MODAL --}}
-  <div class="modal fade" id="watchlist" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-            <div class="search-box">
-              <div class="search-field">
-                <input placeholder="Search For Movies" id="watchlistMovieSearch" class="input" type="text">
-                <div class="search-box-icon">
-                  <button class="btn-icon-content" id="watchlistSearch">
-                    <i class="search-icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 512">
-                        <path
-                          d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
-                          fill="#fff"></path>
-                      </svg>
-                    </i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          <button type="button" class="btn-close nukeAfterClose" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body2">
-          <h6>Click a movie poster to add it to your watchlist</h6>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary closeReload2" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
+{{!-- TOAST --}}
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto"></strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
   </div>
+</div>
 
-  {{!-- TOAST --}}
-  <div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <strong class="me-auto"></strong>
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-    </div>
-  </div>
-
-  {{!-- JS SCRIPTS --}}
-  <script src="/JS/profile.js"></script>
-
+{{!-- JS SCRIPTS --}}
+<script src="/JS/profile.js"></script>

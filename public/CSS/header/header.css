@@ -59,6 +59,7 @@ body {
   bottom: -20px;
 }
 .neon_bar:after, .neon_bar:before {
+  width: 100%;
   height: 5px;
   content: " ";
   display: block;
@@ -101,12 +102,13 @@ body {
     background-image: linear-gradient(black, #320f42, black);
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 488px) {
   header, main {
     flex-direction: column;
   }
   #marquee {
     font-size: 2em;
     flex-direction: column;
+    max-width: 768px;
   }
 }/*# sourceMappingURL=header.css.map */
