@@ -522,7 +522,7 @@ img {
 }
 
 /* MOBILE */
-@media screen and (max-width: 488px) {
+@media screen and (max-width: 768px) {
   *:not(#newRelease, .newrleaserow, .github-links) {
     flex-direction: column;
     justify-content: center;
@@ -619,15 +619,15 @@ img {
     margin-left: 25px;
   }
 
-  /* .newrleaserow{
-    min-width: 50px;
-    max-width: 95vw;
-  } */
 }
 
 /* TABLET */
 @media screen and (max-width: 1024px) {
-  *:not(#newRelease, .newrleaserow, .github-links) {}
+  *:not(#newRelease, .newrleaserow, .github-links) {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  }
 
   .writebtn {
     align-items: center;

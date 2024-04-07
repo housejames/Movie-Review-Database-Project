@@ -130,11 +130,14 @@
 }
 
 .movieStyle {
-  padding-bottom: 5px;
+  text-align: center;
+  max-width: 100px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top: 8px;
 
   p {
-    margin: auto;
-    max-width: 125px;
+    color: aliceblue;
     font-size: 75%;
   }
 }
@@ -159,7 +162,6 @@
 #nuke {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 15px;
   justify-content: space-evenly;
 }
 
@@ -348,4 +350,25 @@ h3 {
 
 #star5:checked~label>svg {
   fill: #ab68ff;
+}
+
+@media screen and (max-width: 488px) {
+  * {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  }
+
+
+
+  img{
+    width: 75px;
+    height: 115px
+  }
+
+
+
+  .formandposter {
+    align-items: center;
+  }
 }

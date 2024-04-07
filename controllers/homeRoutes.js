@@ -199,6 +199,9 @@ router.get('/:id', async (req, res) => {
             if(parsedUserData.length == 1){
             res.render('searchedProfile', { parsedUserData })
             }
+            else{
+                res.status(400).json(err);
+            }
         }
         // Catch for errors
     } catch (err) {

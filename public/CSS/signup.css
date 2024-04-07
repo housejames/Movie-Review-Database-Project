@@ -1,25 +1,27 @@
-h2{
+h2 {
     text-align: center;
 }
-form{
-    background: #242424; 
+
+form {
+    background: #242424;
     text-align: center;
     max-width: 50vw;
     margin: 2rem auto;
     padding: 2rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     line-height: 2;
 }
-form label{
+
+form label {
     float: left;
 }
 
-form input{
+form input {
     width: 85%;
 }
 
-button{
+button {
     margin-top: 1rem;
     display: inline-block;
     outline: 0;
@@ -33,12 +35,24 @@ button{
     transition: all 0.5s ease 0s;
 }
 
-button:hover{
+button:hover {
     box-shadow: rgba(179, 27, 230, 0.646) 0px 1px 40px;
     transition: all 0.1s ease 0s;
 }
 
-#signupName, #signupEmail, #signupPassword {
+#signupName,
+#signupEmail,
+#signupPassword {
     border-radius: 6px;
 }
 
+@media screen and (max-width: 768px) {
+    *:not() {
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+    }
+    #signup{
+        min-width: 85%;
+    }
+}

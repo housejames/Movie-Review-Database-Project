@@ -57,6 +57,7 @@ textarea{
   width: 100%;
 }
 
+
 .userinfo {
   display: flex;
   margin-left: 0px;
@@ -227,8 +228,7 @@ a {
 }
 
 #favorite {
-  /* width: 500px;
-  height: 600px; */
+
 }
 
 #nuke {
@@ -524,6 +524,11 @@ button[type='submit']:focus {
       top: 48px;
     }
   }
+}
 
-
+@media screen and (max-width: 1024px) {
+  .modal-content {
+    width: auto;
+    height: fit-content
+  }
 }
