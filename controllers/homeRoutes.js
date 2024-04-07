@@ -34,7 +34,6 @@ router.get('/', async (req, res) => {
         let fetchedData = await omdbData.json()
         // For loop to cut off any random unknown movie that is released but shouldnt be on the homepage
         for (let i = 0; i < fetchedData.results.length; i++) {
-            console.log(fetchedData.results[i].vote_count)
             if (fetchedData.results[i].vote_count < 500) {
                 fetchedData.results.splice(i, 1)
             }
@@ -61,9 +60,9 @@ router.get('/review', async (req, res) => {
                 'content'
             ],
             include: [
-                { 
-                    model: User, 
-                    attributes: ['username'] 
+                {
+                    model: User,
+                    attributes: ['username']
                 }
             ]
         })
@@ -130,7 +129,7 @@ router.get("/profile", async (req, res) => {
 // GET request that loads either 'searchedMovie.handlebars' or 'searchedProfile.handlebars'
 router.get('/:id', async (req, res) => {
     try {
-        // Method to determin if the user is searching a movie or a user
+        // Method to determine if the user is searching a movie or a user
         let str = req.params.id;
         let result = str.slice(5);
 
@@ -149,13 +148,28 @@ router.get('/:id', async (req, res) => {
                         model: Review
                     }
                 ],
-                where: {
-                    id: movieUserWants
-                }
+
             })
-            // Parses the data and loads the searchedMovie page with the parsed data
-            const parsedMovieData = movieData.map((review) => review.get({ plain: true }));
+            // Searches in our data base if the move the user is searching already exists
+            for (let i = 0; i < movieData.length; i++) {
+                // If the movie does exists in our db render the page
+                if (movieData[i].id == movieUserWants) {
+                    const parsedMovieData = movieData.map((mv) => mv.get({ plain: true }));
+                    dataToRender = parsedMovieData[i]
+                    res.render('searchedMovie', { dataToRender })
+                    return
+                }
+            }
+            // If the movie doesnt exists, add it to oure db then render the page
+            const newMovieData = await Movie.create({
+                id: movieUserWants,
+                name: fetchedData.results[0].title,
+                release_date: fetchedData.results[0].release_date,
+                poster: `https://image.tmdb.org/t/p/w500${fetchedData.results[0].poster_path}`
+            });
+            const parsedMovieData = newMovieData.map((mv) => mv.get({ plain: true }));
             res.render('searchedMovie', { parsedMovieData })
+            // Parses the data and loads the searchedMovie page with the parsed data
             // Else the user is searching for a specific user
         } else {
             // Finds the specific user
@@ -182,7 +196,12 @@ router.get('/:id', async (req, res) => {
             })
             const parsedUserData = userData.map((review) => review.get({ plain: true }));
             // Renders the 'searchedProfile page with parsed data of the found user
+            if(parsedUserData.length == 1){
             res.render('searchedProfile', { parsedUserData })
+            }
+            else{
+                res.status(400).json(err);
+            }
         }
         // Catch for errors
     } catch (err) {

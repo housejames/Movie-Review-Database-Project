@@ -1,3 +1,6 @@
+{{!-- STYLE SHEET --}}
+<link rel="stylesheet" type="text/css" href="/CSS/header-buttons.css">
+
 {{!-- STYLING --}}
 <style>
     body {
@@ -11,7 +14,7 @@
     .movie-container {
         display: flex;
         align-items: flex-start;
-        margin-top: 0px;
+        margin-top: 45px;
     }
 
     .movie-poster {
@@ -26,7 +29,7 @@
         top: 20px;
         max-width: 100%;
         height: auto;
-        border-radius: 8px;
+        border-radius: 15px;
     }
 
     .movie-details {
@@ -42,20 +45,79 @@
         color: #ccc;
     }
 
-    @media (max-width: 768px) {
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #000000;
+        color: #ffffff;
+        margin: 0;
+        padding: 0px;
+    }
+
+    .review-container {
+        margin-bottom: 32px;
+    }
+
+    .review-container h1,
+    .movie-name {
+        font-size: 2.25rem;
+        line-height: 2.5rem;
+        font-weight: 800;
+        color: #ec8be2;
+        margin-bottom: 16px;
+        text-align: left;
+    }
+
+    .review {
+        background-color: #2d3748;
+        padding: 16px;
+        margin-bottom: 16px;
+        border-radius: 0.5rem;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        transition: transform 200ms;
+    }
+
+    .review:hover {
+        transform: scale(1.05);
+    }
+
+    .review h2 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #ec8be2;
+        margin-bottom: 8px;
+    }
+
+    .review p {
+        display: inline-block;
+        white-space: normal;
+        word-wrap: break-all;
+        color: #cbd5e0;
+    }
+
+    @media screen and (max-width: 768px) {
         .movie-container {
             flex-direction: column;
+            align-items: center;
         }
 
-        .movie-poster,
         .movie-details {
             max-width: 100%;
             flex-basis: auto;
         }
-    }
 
-    .home-button {
-        top: 56px
+        .movie-poster {
+            text-align: center;
+            position: static;
+            max-width: 75%;
+            padding: 0%;
+            margin: 15px;
+        }
+
+        .movie-name {
+            min-width: 100%;
+            font-size: 125%;
+            text-align: center;
+        }
     }
 </style>
 
@@ -63,20 +125,32 @@
     {{!-- MOVIE POSTER --}}
     <div class="movie-container">
         <div class="movie-poster">
-            <img src="{{parsedMovieData.[0].poster}}" alt="">
+            <img src="{{dataToRender.poster}}" alt="">
         </div>
         <div class="movie-details">
-            {{!-- LOADS PARTIAL --}}
-            {{#each parsedMovieData as |movie|}}
-            <div>
-                {{> searched-details}}
+            <div class="review-container">
+                <div class="row">
+                    <p class="movie-name col-6">{{dataToRender.name}}</p>
+                    <p class=" movie-name average-rating col-6"></p>
+                </div>
+                {{!-- EACH REVIEW --}}
+                {{#each dataToRender.reviews as |review|}}
+                <div class="review">
+                    <h2>{{title}}</h2>
+                    <p>{{content}}</p>
+                    <div class="rating" id="{{rating}}">
+                    </div>
+                </div>
+                {{/each}}
             </div>
-            {{/each}}
         </div>
     </div>
 
     {{!-- PROFILE/HOME BUTTONS --}}
-    <a href="/" class="home-button"><i class="fas fa-home"></i></a>
+    <div class="header-icons">
+        <a href="/profile" class="user-button"><i class="fas fa-user"></i></a>
+        <a href="/" class="home-button"><i class="fas fa-home"></i></a>
+    </div>
 
     {{!-- JS SCRIPTS --}}
     <script src="/JS/searchedMovieLogic.js"></script>

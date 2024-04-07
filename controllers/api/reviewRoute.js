@@ -28,19 +28,22 @@ router.get('/', async (req, res) => {
 
 // DELETE request to delete a specifc review
 router.delete('/:id', async (req, res) => {
-  try {
-    // Finds a review where the id matches the search paramater
-    const data = await Review.destroy({
-      where: {
-        id: req.params.id,
-      },
-    });
-    res.json()
-    // Catch for errors
-  } catch (err) {
-    res.status(500).json(err);
+  if (req.session.logged_in) {
+    try {
+      // Finds a review where the id matches the search paramater
+      const data = await Review.destroy({
+        where: {
+          id: req.params.id,
+        },
+      });
+      res.json()
+      // Catch for errors
+    } catch (err) {
+      res.status(500).json(err);
+    }
   }
 });
+
 
 // POST request to post a review
 router.post('/', async (req, res) => {
@@ -59,6 +62,28 @@ router.post('/', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+// PUT request to update a review
+router.put('/', async (req, res) => {
+  // Updates the review with data from the put request made on the profile page
+  try {
+    const reviewData = await Review.update(
+      {
+        title: req.body.review_title,
+        content: req.body.review_content,
+        rating: req.body.review_rating,
+        user_id: req.session.user_id,
+      }, {
+      where: {
+        id: req.body.review_id
+      }
+    });
+    res.status(200).json(reviewData);
+    // Catch for errors  
+  } catch (err) {
+    res.status(400).json(err);
+  }
+})
 
 // Exports all the routes for use
 module.exports = router;

@@ -22,7 +22,7 @@ signupForm.addEventListener("submit", (e) => {
             location.href = "/profile"
             // Alert if fields were left empty
         } else {
-            alert("Please fill out all fields")
+            alert("A user is already registered with that email")
         }
     })
 })

@@ -1,31 +1,31 @@
-      /* Home button styles */
-      .home-button {
-        position: absolute;
-        top: 3rem;
-        right: 2rem;
-        background-color: transparent;
-        border: none;
-        color: black;
-        font-size: 1.5rem;
-        cursor: pointer;
-        transition: color 0.3s ease, transform 0.2s ease;
-    }
-
-   .home-button:hover {
-        color: purple;
-        transform: translateY(-2px);
-    }
-
-   .home-button:active {
-        color: purple;
-        transform: translateY(-2px) scale(0.95);
-    }
-
-    /* User button styles */
-   .user-button {
+/* Home button styles */
+.home-button {
     position: absolute;
-    top:3rem;
-    right: 5rem;
+    top: 3.5rem;
+    right: 130px;
+    background-color: transparent;
+    border: none;
+    color: black;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.home-button:hover {
+    color: purple;
+    transform: translateY(-2px);
+}
+
+.home-button:active {
+    color: purple;
+    transform: translateY(-2px) scale(0.95);
+}
+
+/* User button styles */
+.user-button {
+    position: absolute;
+    top: 3.5rem;
+    right: 80px;
     background-color: transparent;
     border: none;
     color: black;
@@ -42,4 +42,19 @@
 .user-button:active {
     color: purple;
     transform: translateY(-2px) scale(0.95);
+}
+
+@media screen and (max-width: 488px) {
+    
+    .user-button{
+        top: 31px;
+        right: 25px;
+        font-size: 1.1rem;
+    }
+
+    .home-button {
+        top: 31px;
+        right: 50px;
+        font-size: 1.1rem;
+    }
 }

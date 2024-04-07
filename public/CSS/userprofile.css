@@ -6,6 +6,7 @@ body {
 
 .profile-container {
   display: flex;
+  justify-content: center;
   margin: 20px;
 }
 
@@ -22,43 +23,64 @@ body {
 }
 
 .favorites-box,
-.watchlist-box {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust minmax as needed */
-  gap: 20px; /* This replaces the flex-wrap and justify-content properties */
+.watchlist-box,
+.userinfo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  /* Adjust minmax as needed */
+  gap: 20px;
+  /* This replaces the flex-wrap and justify-content properties */
   border: 5px solid rgb(130, 22, 143);
   border-radius: 5px;
   margin-top: 15px;
   background-color: black;
-  padding: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 35px;
+  padding-bottom: 35px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: auto;
+}
+.titleArea{
+  height: 75px;
 }
 
-.favorite-movie h3, .watchlist-item h3 {
-  position: relative;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.contentArea{
+  width: 100%;
+  height: 350px;
+}
+
+textarea{
+  width: 100%;
 }
 
 
+.userinfo {
+  display: flex;
+  margin-left: 0px;
+}
 
-.favorite-movie{
+.favorite-movie {
   width: 137px;
   margin: 10px;
-  h3{
+  text-align: center;
+
+  h3 {
     text-align: center;
     font-size: 75%;
   }
 }
+
 .favorite-movie img {
   height: 160px;
   width: 105px;
   border-radius: 15px;
 }
 
-.expandable{
+.expandable {
   background-color: #171717;
   color: rgb(255, 255, 255);
   margin: 15px;
@@ -66,70 +88,89 @@ body {
 
 
 
-#accordion{
+#accordion {
+  gap: 20px;
   border: 5px solid rgb(130, 22, 143);
   border-radius: 5px;
   margin-top: 15px;
-  h2{
+  background-color: black;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  h2 {
     text-align: center;
-    
+
   }
 }
-/* .editBtn{
-  background-color: aliceblue;
-  color: white;
-  border-radius: ;
-} */
-.collapse{
+
+.collapse {
   background-color: #171717;
   border: 3px solid #212121;
   border-radius: 25px;
   margin: 8px;
-  h6{
+
+  h6 {
     color: rgb(255, 255, 255);
-    border-bottom:  5px solid rgb(130, 22, 143);
+    border-bottom: 5px solid rgb(130, 22, 143);
     width: fit-content;
   }
 }
-.titlebtn{
+
+.editReviewBtn {
+  position: absolute;
+  right: 3.5rem;
+  bottom: .7rem;
   color: rgb(255, 255, 255);
+  background-color: transparent;
+  text-decoration: none;
   font-size: 100%;
+  border-radius: 100px;
+  width: fit-content;
 }
 
-.titlebtn:hover{
-  color: rgb(160, 20, 188);
+.editReviewBtn:hover {
+  box-shadow: 0 0 10px rgb(255, 174, 0);
+  color: rgb(160, 20, 188)
 }
-.watchlist-item{
+
+.watchlist-item {
+  text-align: center;
   width: 137px;
   margin: 10px;
-  h3{
+
+  h3 {
     text-align: center;
     font-size: 75%;
   }
 }
+
 .watchlist-item img {
   height: 160px;
   width: 105px;
   border-radius: 15px;
 }
-.userBoxes{
+
+.userBoxes {
   background-color: black;
   position: relative;
-  top: 35px;
+  top: 55px;
   margin-top: 15px;
   margin-left: 25px;
   width: fit-content;
   height: fit-content;
+  padding-bottom: 15px;
 }
 
-.addBtn{
+.addBtn {
   display: inline-block;
   background-color: #2a2929;
   position: relative;
   text-align: center;
   align-items: center;
-  /* left: 500px; */
-  /* top: 5px; */
   margin-left: 8px;
   width: fit-content;
   height: fit-content;
@@ -141,22 +182,21 @@ body {
   border: 3px solid black;
   margin-right: 2px;
 }
-.addBtn:hover{
-  
+
+.addBtn:hover {
+
   background-color: #662185;
   border-color: #a13fce;
   bottom: 3px;
-  
+
 }
 
-.editBtn{
+.editBtn {
   display: inline-block;
   background-color: #2a2929;
   position: relative;
   text-align: center;
   align-items: center;
-  /* left: 500px; */
-  /* top: 5px; */
   margin-left: 8px;
   width: fit-content;
   height: fit-content;
@@ -169,65 +209,71 @@ body {
   margin-right: 2px
 }
 
-.editBtn:hover{
-  
+.editBtn:hover {
+
   background-color: #662185;
   border-color: #a13fce;
   bottom: 3px;
-  
+
 }
-a{
+
+a {
   text-decoration: none;
   color: aliceblue;
 }
-.modal-content{
+
+.modal-content {
   width: 750px;
   height: fit-content
 }
-#favorite{
-  /* width: 500px;
-  height: 600px; */
+
+#favorite {
+
 }
 
-#nuke{
+#nuke {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-.movieStyle{
+
+.movieStyle {
   text-align: center;
   width: 100px;
   margin-left: 8px;
   margin-right: 8px;
   margin-top: 8px;
-  p{
+
+  p {
     color: aliceblue;
     font-size: 75%;
   }
 }
 
-.remove{
+.remove {
   position: relative;
   top: 15px;
-  left: 90px;
+  left: 50px;
   border-radius: 100%;
   border: 1px solid rgba(0, 0, 0, 0);
   background-color: #2a2929;
   color: #f60a0a;
 }
-.remove:hover{
+
+.remove:hover {
   background-color: #f60a0a;
   color: rgb(255, 255, 255);
   bottom: 3px;
 }
 
-.poster{
+.poster {
   padding: 0%;
   text-align: center;
   border: solid rgb(0, 0, 0);
   background-color: black;
   border-radius: 15px;
-  img{
+
+  img {
     background-color: #121212;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 15px;
@@ -235,6 +281,7 @@ a{
     height: 150px;
   }
 }
+
 .search {
   --input-line: #ff0000;
   --input-text-color: #ff0000;
@@ -245,7 +292,7 @@ a{
   --search-max-width: 250px;
   --search-min-width: 150px;
   --border-radius: 5px;
-  --transition-cubic-bezier: 150ms cubic-bezier(0.4,0,0.2,1);
+  --transition-cubic-bezier: 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .search-box {
@@ -353,34 +400,135 @@ a{
   right: 15px;
 }
 
-.delete{
-  margin-top: 3px;
-  margin-left: 55px;
+.delete {
+  position: absolute;
+  right: .2rem;
+  bottom: 1rem;
   width: fit-content;
   height: fit-content;
-  background-color: #17171700;
-  border: 1px solid #171717;
+  background-color: transparent;
+  border: 0px;
   border-radius: 50%;
 }
 
-.trashcan{
+.trashcan {
   border-radius: 75%;
-  position: absolute;
-}
-.card-header {
-position: flex;
 }
 
-.trashcan:hover{
+.card-header {
+  position: flex;
+  margin: 15px;
+}
+
+.trashcan:hover {
   box-shadow: 0 0 10px red;
 }
 
-.createdReview{
+.createdReview {
   background-color: transparent;
+  border: 3px solid rgba(255, 255, 255, 0.471);
+  border-radius: 15px;
   color: white;
-  border: none;
   outline: none;
-  width: 100%;
-  height: 150px;
 }
 
+.button[type='submit'] {
+  background-image: linear-gradient(to right, #333333, #555555);
+  /* Dark gradient background */
+  color: #ffffff;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 1px solid #444;
+  /* Slight border */
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: background-image 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  /* Space between the icon and text */
+}
+
+.button[type='submit']:hover,
+button[type='submit']:focus {
+  background-image: linear-gradient(to right, #555555, #777777);
+  box-shadow: 0 4px 6px rgba(2, 137, 38, 0.6);
+  transform: translateY(-2px);
+}
+
+.button[type='submit']:active {
+  background-image: linear-gradient(to right, #222222, #444444);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+  transform: translateY(1px);
+}
+
+.starRating{
+  align-items: start;
+  text-align: left;
+  width: fit-content;
+
+}
+
+@media screen and (max-width: 488px) {
+  *:not() {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .col-6 {
+    min-width: 95vw;
+  }
+
+  .profile-container {
+    margin: auto;
+    justify-content: center;
+  }
+
+  .modal-content {
+    width: auto;
+    height: fit-content
+  }
+
+  .mb-0 {
+    width: 175px;
+    text-wrap: wrap;
+    font-size: 75%;
+  }
+
+  textarea{
+    font-size: 80%;
+  }
+  .button{
+    width: 9rem;
+    font-size: 5%;
+  }
+
+  .userinfo{
+    width: 90vw;
+  }
+
+  .userBoxes{
+    top: 55px;
+  }
+
+  #accordion {
+    margin: auto;
+  }
+  .reviewsContainer{
+    h2{
+      top: 48px;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .modal-content {
+    width: auto;
+    height: fit-content
+  }
+}

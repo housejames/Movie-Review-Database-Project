@@ -51,7 +51,6 @@ router.post('/fav', async (req, res) => {
     })
     // Catch for errors
   } catch (err) {
-    console.log(4)
     res.status(400).json(err);
   }
 });

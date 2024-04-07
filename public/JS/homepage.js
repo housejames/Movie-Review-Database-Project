@@ -8,7 +8,21 @@ userSearch.addEventListener('click', async (event) => {
         method: 'GET',
     });
     // Routes the user to the searchedProfile page
-    document.location.replace(`/${userSearchValue}`)
+    if (response.ok) {
+        document.location.replace(`/${userSearchValue}`)
+    } else {
+        // Removes the previous 'no user found' alert
+        const previousCards = document.querySelector('.noUserNuke')
+        if (previousCards !== null) {
+            previousCards.remove()
+        }
+        // Makes a red text notification that no user was found
+        let noUserFoundWrap = document.querySelector('.noUserFound')
+        let noUserFound = document.createElement('p')
+        noUserFound.setAttribute('class', 'noUserNuke text-danger')
+        noUserFound.textContent = 'No user found with that username *usernames are case sensitive*'
+        noUserFoundWrap.append(noUserFound)
+    }
 })
 
 // Add an event listener to the search for a movie button that runs a function

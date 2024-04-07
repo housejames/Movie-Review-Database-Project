@@ -15,12 +15,19 @@
 
 <form id="signup">
    <label for="signupEmail">New Username</label><br>
-   <input type="text" id="signupName" placeholder="name"><br>
+   <input type="text" id="signupName" placeholder="name" required><br>
    <label for="signupEmail">Email</label><br>
-   <input type="text" id="signupEmail" placeholder="email"><br>
+   <input type ='email' type="text" id="signupEmail" placeholder="email" required><br>
    <label for="signupPassword">Password</label><br>
-   <input type="password" id="signupPassword"><br>
+   <input type="password" id="signupPassword" required><br>
    <button class="btn sendMail">Submit</button>
 </form>
+
+{{!-- PROFILE/HOME BUTTON --}}
+<div class="header-icons">
+  <a href="/profile" class="user-button"><i class="fas fa-user"></i></a>
+  <a href="/" class="home-button"><i class="fas fa-home"></i></a>
+</div>
+
 <script src="/JS/auth.js"></script>
 <script src="/JS/mailer.js"></script>
