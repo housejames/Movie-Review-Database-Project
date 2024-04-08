@@ -1,5 +1,6 @@
 // Imports express into a router variable
 const router = require('express').Router();
+const session = require('express-session');
 // Imports the joined models
 const { User, Review, Movie, UserFavorite, UserWatchList } = require('../models/index');
 
@@ -32,9 +33,10 @@ router.get('/', async (req, res) => {
         apirequest = `${newReleaseDomain}${apiKey}`
         const omdbData = await fetch(apirequest)
         let fetchedData = await omdbData.json()
+
         // For loop to cut off any random unknown movie that is released but shouldnt be on the homepage
         for (let i = 0; i < fetchedData.results.length; i++) {
-            if (fetchedData.results[i].vote_count < 500) {
+            if (fetchedData.results[i].vote_count < 150) {
                 fetchedData.results.splice(i, 1)
             }
         }
@@ -167,6 +169,7 @@ router.get('/:id', async (req, res) => {
                 release_date: fetchedData.results[0].release_date,
                 poster: `https://image.tmdb.org/t/p/w500${fetchedData.results[0].poster_path}`
             });
+            // console.log(newMovieData)
             const parsedMovieData = newMovieData.map((mv) => mv.get({ plain: true }));
             res.render('searchedMovie', { parsedMovieData })
             // Parses the data and loads the searchedMovie page with the parsed data
@@ -199,7 +202,7 @@ router.get('/:id', async (req, res) => {
             if(parsedUserData.length == 1){
             res.render('searchedProfile', { parsedUserData })
             }
-            else{
+            else if(err){
                 res.status(400).json(err);
             }
         }
@@ -210,5 +213,14 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+router.get("/edit/auth", async (req, res) => {
+    // Checks if logged in
+    if (req.session.logged_in) {
+        // If logged in take the user to their profile
+        const userData = await User.findByPk(req.session.user_id)
+        const ParsedData = userData.toJSON();
+        res.render("editauth", ParsedData)
+    }
+})
 // Exports the routes for use
 module.exports = router;

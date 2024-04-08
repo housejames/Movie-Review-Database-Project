@@ -2,12 +2,13 @@ const router = require('express').Router();
 const bcrypt = require("bcrypt")
 // Import the User model from the models folder
 const { User, Review, Movie, UserFavorite, UserWatchList } = require('../../models');
+const { where } = require('sequelize');
 
 
 // POST request for adding a user
 router.post('/', async (req, res) => {
   try {
-    const userData = await User.create(req.body);
+    const userData = await User.create(req.body)
     // Saves the session data
     req.session.save(() => {
       req.session.user_id = userData.id;
@@ -99,6 +100,61 @@ router.post('/logout', (req, res) => {
     // Catch for errors
   } else {
     res.status(404).end();
+  }
+});
+
+// PUT request to update the users username
+router.put('/username', async (req, res) => {
+  try {
+    // Pulls data from a put fetch request
+    const usereData = await User.update({
+      username: req.body.new_username,
+    }, {
+      where: {
+        id: req.session.user_id,
+      }
+    });
+    res.status(200).json(usereData);
+    // Catch for errors  
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+// PUT request to update the users email
+router.put('/email', async (req, res) => {
+  try {
+    // Pulls data from a put fetch request
+    const usereData = await User.update({
+      email: req.body.new_email,
+    }, {
+      where: {
+        id: req.session.user_id,
+      }
+    });
+    res.status(200).json(usereData);
+    // Catch for errors  
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+// PUT request to update the users password
+router.put('/password', async (req, res) => {
+  try {
+    // Pulls data from a put fetch request
+    const usereData = await User.update({
+      password: req.body.new_password,
+    }, {
+      where: {
+        id: req.session.user_id,
+      },
+      individualHooks: true,
+    });
+    res.status(200).json(usereData);
+    // Catch for errors  
+  } catch (err) {
+    res.status(400).json(err);
   }
 });
 

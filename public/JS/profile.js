@@ -3,7 +3,9 @@
 FavClick = document.querySelector('#Favoritesearch')
 FavClick.addEventListener('click', async (event) => {
   event.preventDefault();
+  // Grab the value from the users search
   const movieToSearch = document.querySelector('#favoriteMovieSearch').value;
+  // Replace spaces with + for best search results
   let userSearch = movieToSearch.replace(/\s/g, '+');
 
   // Send fetch request to add a new dish
@@ -14,20 +16,18 @@ FavClick.addEventListener('click', async (event) => {
   if (response.ok) {
     pulledArray = tmdbData
     console.log(pulledArray)
-  } else {
-    alert('Post Failed!');
   }
+  // Store returned data into pulledArray
   fetchedData = pulledArray
-
+  // If cards already exist on the page remove them before generating new cards
   const previousCards = document.querySelector('#nuke')
-
   if (previousCards !== null) {
     previousCards.remove()
   }
 
+  // Creates all the pster cards inside the modal via dom manipulation
   let divwrap = document.createElement('div')
   divwrap.setAttribute('id', 'nuke')
-
   for (let i = 0; i < fetchedData.results.length; i++) {
     if (fetchedData.results[i].poster_path === null) {
       continue
@@ -48,11 +48,13 @@ FavClick.addEventListener('click', async (event) => {
     div.append(button, name)
     divwrap.append(div)
   }
+  document.querySelector('.modal-body').append(divwrap)
 
+  // Adds an event listener to the modal close botton to refres the page
   closeReload = document.querySelector('.closeReload')
   closeReload.addEventListener('click', reload)
 
-  document.querySelector('.modal-body').append(divwrap)
+  // Adds an event listener to each of the poster buttons to run the favoriteMovie function
   posterBtn = document.querySelectorAll('.getById')
   for (let i = 0; i < posterBtn.length; i++) {
     posterBtn[i].addEventListener('click', favoriteMovie);
@@ -63,7 +65,9 @@ FavClick.addEventListener('click', async (event) => {
 wlClick = document.querySelector('#watchlistSearch')
 wlClick.addEventListener('click', async (event) => {
   event.preventDefault();
+  // Grab the value from the users search
   const movieToSearch = document.querySelector('#watchlistMovieSearch').value;
+  // Replace spaces with + for best search results
   let userSearch = movieToSearch.replace(/\s/g, '+');
 
   // Send fetch request to add a new dish
@@ -75,20 +79,17 @@ wlClick.addEventListener('click', async (event) => {
 
     pulledArray = tmdbData
     console.log(pulledArray)
-  } else {
-    alert('Post Failed!');
   }
+  // Store returned data into pulledArray
   fetchedData = pulledArray
-
+  // If cards already exist on the page remove them before generating new cards
   const previousCards = document.querySelector('#nuke')
-
   if (previousCards !== null) {
     previousCards.remove()
   }
-
+  // Creates all the pster cards inside the modal via dom manipulation
   let divwrap = document.createElement('div')
   divwrap.setAttribute('id', 'nuke')
-
   for (let i = 0; i < fetchedData.results.length; i++) {
     if (fetchedData.results[i].poster_path === null) {
       continue
@@ -110,10 +111,11 @@ wlClick.addEventListener('click', async (event) => {
     div.append(button, name)
     divwrap.append(div)
   }
+  document.querySelector('.modal-body2').append(divwrap)
+  // Adds an event listener to the modal close botton to refres the page
   closeReload = document.querySelector('.closeReload2')
   closeReload.addEventListener('click', reload)
-
-  document.querySelector('.modal-body2').append(divwrap)
+  // Adds an event listener to each of the poster buttons to run the watchlistMovie function
   posterBtn = document.querySelectorAll('.getById')
   for (let i = 0; i < posterBtn.length; i++) {
 
@@ -123,8 +125,9 @@ wlClick.addEventListener('click', async (event) => {
 
 // Adds any selected movie in the modal to favorites
 async function favoriteMovie(event) {
-
+  // Grabs the id assigned to the poster via handlebars
   let idName = event.target.id
+  // Executes the toast
   const toastTrigger = document.getElementsByClassName('liveToastBtn')
   const toastLiveExample = document.getElementById('liveToast')
   if (toastTrigger) {
@@ -133,9 +136,9 @@ async function favoriteMovie(event) {
     toastBootstrap.show()
 
   }
+  // Finds the matching movie in the api array and  stores the matching  movie data to variables
   for (let i = 0; i < pulledArray.results.length; i++) {
     if (pulledArray.results[i].id == idName) {
-      console.log('test123')
       let toastName = document.querySelector(".me-auto")
       toastName.textContent = `${pulledArray.results[i].title} added to favorites`
       movie_name = pulledArray.results[i].title
@@ -145,9 +148,8 @@ async function favoriteMovie(event) {
     }
     continue
   }
-  console.log(movie_name)
-
-
+  // POST request to add the movie to the users favorites
+  // Sends movie data incase movie needs to be added to our db
   const response2 = await fetch('/api/movies/fav', {
     method: 'POST',
     body: JSON.stringify({
@@ -164,14 +166,16 @@ async function favoriteMovie(event) {
 
 // Adds any selected movie in the modal to favorites
 async function watchlistMovie(event) {
-
+  // Grabs the id assigned to the poster via handlebars
   let idName = event.target.id
+  // Executes the toast
   const toastTrigger = document.getElementsByClassName('liveToastBtn')
   const toastLiveExample = document.getElementById('liveToast')
   if (toastTrigger) {
     const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
     toastBootstrap.show()
   }
+  // Finds the matching movie in the api array and  stores the matching  movie data to variables
   for (let i = 0; i < pulledArray.results.length; i++) {
     if (pulledArray.results[i].id == idName) {
       let toastName = document.querySelector(".me-auto")
@@ -183,7 +187,8 @@ async function watchlistMovie(event) {
     }
     continue
   }
-
+  // POST request to add the movie to the users watchlist
+  // Sends movie data incase movie needs to be added to our db
   const response2 = await fetch('/api/movies/wl', {
     method: 'POST',
     body: JSON.stringify({
@@ -200,8 +205,9 @@ async function watchlistMovie(event) {
 
 // Sends a DELETE request to the backend to delete the selected favorite movie
 async function deleteFavRequest(event) {
+  // Grabs the id assignbed through handlebars
   let idName = event.target.id
-  console.log(idName)
+  // DELETE request to backend
   fetch(`/api/favorite/${idName}`, {
     method: "DELETE",
   }).then(res => {
@@ -214,8 +220,9 @@ async function deleteFavRequest(event) {
 
 // Sends a DELETE request to the backend to delete the selected wishlist movie
 async function deleteWlRequest(event) {
+  // Grabs the id assignbed through handlebars
   let idName = event.target.id
-  console.log(idName)
+  // DELETE request to backend
   fetch(`/api/watchlist/${idName}`, {
     method: "DELETE",
   }).then(res => {
@@ -228,8 +235,9 @@ async function deleteWlRequest(event) {
 
 // Sends a DELETE request to the backend to delete the selected review
 async function deleteReviewRequest(event) {
+  // Grabs the id assignbed through handlebars
   let idName = event.target.id
-  console.log(idName)
+  // DELETE request to backend
   fetch(`/api/reviews/${idName}`, {
     method: "DELETE",
   }).then(res => {
@@ -312,19 +320,18 @@ function reload() {
 
 // Function to grab the most recent interacted review id
 function interactId(event) {
+  // Finds the id of the interacted review
   let review_id = event.target.id
   let interactedId = review_id.slice(13)
-  console.log(interactedId)
-
+  /// Grabs the review score
   let interactedReviw = document.querySelector(`#interact${interactedId}`).textContent
-  console.log(interactedReviw)
-
+  // Sets cariables for the html radio buttons
   let star1 = document.querySelector(`#star1-${interactedId}`)
   let star2 = document.querySelector(`#star2-${interactedId}`)
   let star3 = document.querySelector(`#star3-${interactedId}`)
   let star4 = document.querySelector(`#star4-${interactedId}`)
   let star5 = document.querySelector(`#star5-${interactedId}`)
-
+  // Assings checked to the radio buttons based on reviews rating
   if (interactedReviw == 5) {
     star1.checked = true
     star2.checked = true
@@ -347,3 +354,8 @@ function interactId(event) {
     star1.checked = true
   }
 }
+
+// Redirect the user to a new page when they click the button to edit user info
+document.querySelector('.editBtn').addEventListener('click', async (event) => {
+  location.replace('/edit/auth')
+})

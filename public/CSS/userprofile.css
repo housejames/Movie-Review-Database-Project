@@ -174,15 +174,19 @@ textarea{
   margin-left: 8px;
   width: fit-content;
   height: fit-content;
-  width: 40px;
-  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  max-width: 40px;
+  max-height: 40px;
   border-radius: 100px;
   color: white;
   font-size: 75%;
   border: 3px solid black;
   margin-right: 2px;
 }
-
+.hideMe{
+  color: #171717;
+}
 .addBtn:hover {
 
   background-color: #662185;
@@ -258,6 +262,10 @@ a {
   border: 1px solid rgba(0, 0, 0, 0);
   background-color: #2a2929;
   color: #f60a0a;
+  min-width: 30px;
+  min-height: 30px;
+  max-width: 30px;
+  max-height: 30px;
 }
 
 .remove:hover {
@@ -473,7 +481,7 @@ button[type='submit']:focus {
 
 }
 
-@media screen and (max-width: 488px) {
+@media screen and (max-width: 768px) {
   *:not() {
     flex-direction: column;
     justify-content: center;

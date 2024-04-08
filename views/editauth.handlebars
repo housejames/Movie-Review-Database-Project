@@ -1,0 +1,25 @@
+<link rel="stylesheet" type="text/css" href="/CSS/signup.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+
+<h2>Click save beneath each attribute to save</h2>
+
+<form id="signup">
+    <label for="signupEmail">New Username</label><br>
+    <input type="text" value="{{username}}" id="userValue" placeholder="name"><br>
+    <button class="btn newUser">Save new username</button><br>
+    <label for="signupEmail">New Email</label><br>
+    <input type='email' value="{{email}}" type="text" id="emailValue" placeholder="email"><br>
+    <button class="btn newEmail">Save new email</button><br>
+    <label for="signupPassword">New Password</label><br>
+    <input type="password" id="passValue"><br>
+    <button class="btn newPass">Save new password</button><br>
+</form>
+
+{{!-- PROFILE/HOME BUTTON --}}
+<div class="header-icons">
+    <a href="/profile" class="user-button"><i class="fas fa-user"></i></a>
+    <a href="/" class="home-button"><i class="fas fa-home"></i></a>
+</div>
+
+<script src="/JS/editUserLogic.js"></script>
