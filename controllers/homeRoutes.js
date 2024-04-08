@@ -33,10 +33,9 @@ router.get('/', async (req, res) => {
         apirequest = `${newReleaseDomain}${apiKey}`
         const omdbData = await fetch(apirequest)
         let fetchedData = await omdbData.json()
-
         // For loop to cut off any random unknown movie that is released but shouldnt be on the homepage
         for (let i = 0; i < fetchedData.results.length; i++) {
-            if (fetchedData.results[i].vote_count < 150) {
+            if (fetchedData.results[i].vote_count < 250) {
                 fetchedData.results.splice(i, 1)
             }
         }
