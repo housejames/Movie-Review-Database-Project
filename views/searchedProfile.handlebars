@@ -15,17 +15,17 @@
         <div class="card-header row">
           <h5 class="mb-0 col-10">
             <button class="btn btn-link titlebtn" id="edit-trigger-{{id}}" data-bs-toggle="collapse" data-bs-target="#collapse{{id}}"
-              aria-bs-expanded="false" aria-bs-controls="collapse{{id}}">
+              aria-bs-expanded="false" aria-controls="collapse{{id}}">
               {{title}}
             </button>
           </h5>
         </div>
-        <div id="collapse{{id}}" class="collapse" aria-bs-labelledby="heading{{id}}" data-parent="#accordion">
+        <div id="collapse{{id}}" class="accordion-collapse collapse" aria-bs-labelledby="heading{{id}}" data-bs-parent="#accordion">
           <div class="card-body">
             <h6 class="revealedLabel">Content:</h6>
             <p name="" id="123" cols="75" rows="15">{{content}}</p>
             <br><br><br>
-            <h6>Rating: <span id="interact{{id}}">{{rating}}</span> </h6>
+            <h6>Rating: <span class="hideMe" id="interact{{id}}">{{rating}}</span> </h6>
             {{!-- STAR RADIO BUTTONS --}}
             <div class="starRating">
               <div class="rating">
