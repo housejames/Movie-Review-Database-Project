@@ -236,11 +236,13 @@ img {
 }
 
 .reviewMovie {
-  width: 140px;
+  width: 160px;
   border-bottom: 5px solid black;
   border-radius: 15px;
   margin-top: 15px;
   margin-bottom: 15px;
+  margin-left: 6px;
+  margin-right: 6px;
   background-color: #000000;
   border: 3px solid #792386;
   color: white;

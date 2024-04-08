@@ -44,7 +44,7 @@ router.get('/', async (req, res) => {
         }
       ],
       // Excludes the password from the get request
-      attributes: { exclude: ['password'] }
+      attributes: { exclude: ['password', 'email'] }
     })
     res.status(200).json(userData)
     // Catch for errors

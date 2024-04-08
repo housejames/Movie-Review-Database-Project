@@ -318,7 +318,7 @@ function reload() {
   location.reload()
 }
 
-// Function to grab the most recent interacted review id
+// Function to grab the most recent interacted review id and check radio buttons
 function interactId(event) {
   // Finds the id of the interacted review
   let review_id = event.target.id
@@ -347,7 +347,7 @@ function interactId(event) {
     star1.checked = true
     star2.checked = true
     star3.checked = true
-  } else if (interactedReviw == 4) {
+  } else if (interactedReviw == 2) {
     star1.checked = true
     star2.checked = true
   } else {
