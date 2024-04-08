@@ -6,13 +6,10 @@ for (let i = 0; i < editReview.length; i++) {
 
 // Function to grab the most recent interacted review id
 function interactId(event) {
-    console.log('test')
     let review_id = event.target.id
     let interactedId = review_id.slice(13)
-    console.log(interactedId)
   
     let interactedReviw = document.querySelector(`#interact${interactedId}`).textContent
-    console.log(interactedReviw)
   
     let star1 = document.querySelector(`#star1-${interactedId}`)
     let star2 = document.querySelector(`#star2-${interactedId}`)
