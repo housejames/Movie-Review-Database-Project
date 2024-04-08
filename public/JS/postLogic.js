@@ -82,6 +82,7 @@ searchclick.addEventListener('click', async (event) => {
     pulledArray = tmdbData
   }
   fetchedData = pulledArray
+  console.log(pulledArray)
 
   // Net to remove the previously searched cards
   const previousCards = document.querySelector('#nuke')

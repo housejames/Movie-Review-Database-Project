@@ -44,7 +44,7 @@
     transform: translateY(-2px) scale(0.95);
 }
 
-@media screen and (max-width: 488px) {
+@media screen and (max-width: 768px) {
     
     .user-button{
         top: 31px;

@@ -39,7 +39,7 @@ User.init(
       },
     },
   },
-  // Hooks for hashing password *commented out because it was causing an error*
+  // Hooks for hashing password
   {
     hooks: {
       async beforeCreate(newData) {

@@ -40,7 +40,21 @@ movieSearch.addEventListener('click', async (event) => {
         method: 'GET',
     });
     // Routes the user to the searchedMovie page
-    document.location.replace(`/${safteyNetValue}`)
+    if (response.ok) {
+        document.location.replace(`/${safteyNetValue}`)
+    } else {
+        // Removes the previous 'no user found' alert
+        const previousCards = document.querySelector('.noMovieNuke')
+        if (previousCards !== null) {
+            previousCards.remove()
+        }
+        // Makes a red text notification that no user was found
+        let noMovieFoundWrap = document.querySelector('.noMovieFound')
+        let noMovieFound = document.createElement('p')
+        noMovieFound.setAttribute('class', 'noMovieNuke text-danger')
+        noMovieFound.textContent = 'No movie found with that name'
+        noMovieFoundWrap.append(noMovieFound)
+    }
 })
 
 // Searches the page for all the review ratings
